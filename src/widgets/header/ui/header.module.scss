@@ -1,4 +1,4 @@
-$header-padding: 0.5em 3em;
+$header-vertical-padding: 0.5em;
 $header-title-height: 30x;
 $link-padding: 12px;
 
@@ -6,7 +6,7 @@ $link-padding: 12px;
   background-color: $header-background-color;
   height: $header-height;
   display: flex;
-  padding: $header-padding;
+  padding: $header-vertical-padding $content-inline-padding;
   align-items: center;
   justify-content: space-between;
 

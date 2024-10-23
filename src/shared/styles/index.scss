@@ -3,6 +3,8 @@
 body,
 #root {
   height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
   background-color: $main-background-color;
   font-weight: 900;
   font-family: 'Roboto', sans-serif !important;
@@ -15,6 +17,7 @@ body,
 
   .app__content {
     flex: 2;
+    padding: $content-vertical-padding $content-inline-padding;
   }
 }
 
