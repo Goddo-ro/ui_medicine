@@ -1,0 +1,24 @@
+@import './reset.scss';
+
+body,
+#root,
+.app {
+  height: 100%;
+  background-color: $main-background-color;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+h1 {
+  font-size: $desktop-h1-font-size;
+}
+
+a,
+a:visited,
+a:focus,
+a:active,
+a:hover {
+  color: $main-text-color;
+  text-decoration: none;
+  font-weight: 400;
+}

@@ -1,0 +1,46 @@
+$header-padding: 0.5em 3em;
+$header-title-height: 30x;
+$link-padding: 12px;
+
+.header {
+  background-color: $header-background-color;
+  height: $header-height;
+  display: flex;
+  padding: $header-padding;
+  align-items: center;
+  justify-content: space-between;
+
+  & > * {
+    height: 100%;
+  }
+
+  .header__title {
+    display: flex;
+    align-items: center;
+    gap: $link-padding;
+
+    img {
+      max-height: $header-title-height;
+    }
+
+    h1 {
+      color: $main-background-color;
+    }
+  }
+
+  .header__links {
+    display: flex;
+    align-items: center;
+    gap: $link-padding;
+
+    a:not(:last-child) {
+      padding-right: $link-padding;
+      border-right: 2px solid;
+    }
+
+    a.active {
+      text-decoration-line: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}

@@ -5,17 +5,19 @@ import { Medicines } from '@/pages/medicines';
 import { Medkit } from '@/pages/medkit';
 import { Root } from '@/pages/root';
 
+import { ERoute } from '@/shared/types/routes';
+
 const routesList: RouteProps[] = [
   {
-    path: '/',
+    path: ERoute.medicines,
     element: <Medicines />,
   },
   {
-    path: '/diseases',
+    path: ERoute.diseases,
     element: <Diseases />,
   },
   {
-    path: '/medkit',
+    path: ERoute.medkit,
     element: <Medkit />,
   },
 ];
