@@ -1,12 +1,21 @@
 @import './reset.scss';
 
 body,
-#root,
-.app {
-  height: 100%;
+#root {
+  height: 100vh;
   background-color: $main-background-color;
   font-weight: 900;
   font-family: 'Roboto', sans-serif !important;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .app__content {
+    flex: 2;
+  }
 }
 
 h1 {
