@@ -1,10 +1,9 @@
-import '@/shared/styles/index.scss';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './app/App.tsx';
+import '@/shared/styles/index.scss';
 
-// TODO: set shared import order
+import App from './app/App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
