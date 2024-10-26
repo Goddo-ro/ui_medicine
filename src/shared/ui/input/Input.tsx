@@ -44,7 +44,7 @@ export const Input = ({
           })}
         />
       </div>
-      {error && <span className={classes.errorText}>{error}</span>}
+      <span className={classes.errorText}>{error || ''}</span>
     </div>
   );
 };

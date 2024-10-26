@@ -12,6 +12,7 @@ body,
 
 * {
   box-sizing: border-box;
+  color: $main-text-color;
 }
 
 .app {
@@ -22,6 +23,7 @@ body,
   .app__content {
     flex: 2;
     padding: $content-vertical-padding $content-inline-padding;
+    position: relative;
   }
 }
 
@@ -37,4 +39,15 @@ a:hover {
   color: $main-text-color;
   text-decoration: none;
   font-weight: 400;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $while-color inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: $main-text-color !important;
 }
