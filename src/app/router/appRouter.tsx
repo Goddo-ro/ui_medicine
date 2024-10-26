@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, RouteProps, Routes } from 'react-router-dom';
 
 import { Diseases } from '@/pages/diseases';
+import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicines';
 import { Medkit } from '@/pages/medkit';
 import { Root } from '@/pages/root';
 
-import { ERoute } from '@/shared/types/routes';
+import { ERoute } from '@/shared/routes/routes';
 
 const routesList: RouteProps[] = [
   {
@@ -19,6 +20,10 @@ const routesList: RouteProps[] = [
   {
     path: ERoute.medkit,
     element: <Medkit />,
+  },
+  {
+    path: ERoute.login,
+    element: <LoginPage />,
   },
 ];
 

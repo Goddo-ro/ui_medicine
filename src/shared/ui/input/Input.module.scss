@@ -1,0 +1,52 @@
+.wrapper {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.label {
+  position: absolute;
+  left: 12px;
+  padding: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s ease all;
+  pointer-events: none;
+  background: $main-background-color;
+  color: $main-text-color;
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.field:focus + .label,
+.label.focused {
+  top: 0px;
+  font-size: 0.75em;
+}
+
+.field {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid $header-background-color;
+  border-radius: 8px;
+  outline: none;
+  background: none;
+  color: $main-text-color;
+
+  &.error {
+    border-color: #ff4d4f;
+  }
+}
+
+.errorText {
+  color: #ff0004;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 12px;
+  display: block;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 200;
+}

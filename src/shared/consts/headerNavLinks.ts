@@ -1,5 +1,11 @@
-import { IHeaderNavLinkType } from '@/shared/types/headerNavLinks';
-import { ERoute } from '@/shared/types/routes';
+import { ERoute } from '@/shared/routes/routes';
+
+// TODO: move const to router (if possible make widget)
+
+export type IHeaderNavLinkType = {
+  readonly title: string;
+  readonly to: ERoute;
+};
 
 export const headerNavLinks: IHeaderNavLinkType[] = [
   {
