@@ -3,4 +3,5 @@ export enum ERoute {
   diseases = '/diseases',
   medkit = '/medkit',
   login = '/login',
+  register = '/register',
 }

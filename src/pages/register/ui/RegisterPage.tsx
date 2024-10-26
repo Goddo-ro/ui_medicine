@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { loginData } from '@/pages/login/model/login-schema';
+import { registerData } from '@/pages/register/model/register.schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
 import { Button } from '@/shared/ui/button/Button';
@@ -8,13 +8,13 @@ import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
 import { errorParser } from '@/shared/zod/errorParser';
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const [errors, setErrors] = useState<IFieldError[]>([]);
 
   const validate = (formData: FormData) => {
     const data = Object.fromEntries(formData.entries());
     try {
-      loginData.parse(data);
+      registerData.parse(data);
       setErrors([]);
       console.debug('Successful parse');
     } catch (error: unknown) {
@@ -34,7 +34,7 @@ export const LoginPage = () => {
         e.preventDefault();
         validate(new FormData(e.currentTarget));
       }}
-      title='Вход в аккаунт'
+      title='Регистрация'
     >
       <Input
         type='input'
@@ -51,6 +51,17 @@ export const LoginPage = () => {
         id='password'
         name='password'
         error={errors.find((error) => error.fieldName === 'password')?.message}
+        required
+      />
+
+      <Input
+        label='Подтвердите пароль'
+        type='password'
+        id='confirmPassword'
+        name='confirmPassword'
+        error={
+          errors.find((error) => error.fieldName === 'confirmPassword')?.message
+        }
         required
       />
 

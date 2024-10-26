@@ -4,6 +4,7 @@ import { Diseases } from '@/pages/diseases';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicines';
 import { Medkit } from '@/pages/medkit';
+import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
 import { ERoute } from '@/shared/routes/routes';
@@ -24,6 +25,10 @@ const routesList: RouteProps[] = [
   {
     path: ERoute.login,
     element: <LoginPage />,
+  },
+  {
+    path: ERoute.register,
+    element: <RegisterPage />,
   },
 ];
 

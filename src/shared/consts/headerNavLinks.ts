@@ -1,7 +1,5 @@
 import { ERoute } from '@/shared/routes/routes';
 
-// TODO: move const to router (if possible make widget)
-
 export type IHeaderNavLinkType = {
   readonly title: string;
   readonly to: ERoute;
