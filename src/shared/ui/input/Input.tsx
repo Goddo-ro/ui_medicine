@@ -1,9 +1,13 @@
 import clsx from 'clsx';
-import { useState } from 'react';
-
-import { InputProps } from '@/shared/ui/input/types';
+import { InputHTMLAttributes, useState } from 'react';
 
 import classes from './Input.module.scss';
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  error?: string;
+  containerClassname?: string;
+}
 
 export const Input = ({
   label,

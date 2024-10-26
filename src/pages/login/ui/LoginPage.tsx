@@ -1,5 +1,6 @@
 import { loginData } from '@/pages/login/model/login-schema';
 
+import { Button } from '@/shared/ui/button/Button';
 import { Input } from '@/shared/ui/input/Input';
 
 export const LoginPage = () => {
@@ -30,7 +31,7 @@ export const LoginPage = () => {
         required
       />
 
-      <button type='submit'>Submit</button>
+      <Button type='submit'>Submit</Button>
     </form>
   );
 };
