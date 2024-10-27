@@ -1,3 +1,4 @@
+import { Auth } from '@/features/auth';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ export const Header = () => {
         <h1>MedWiki</h1>
       </div>
       <nav className={classes.header__links}>{links}</nav>
+      <Auth />
     </header>
   );
 };

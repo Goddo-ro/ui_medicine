@@ -15,14 +15,17 @@ class ApiInstance {
     });
   }
 
-  async get<T>(endpoint: string, options: AxiosRequestConfig = {}): Promise<T> {
+  async get<T>(
+    endpoint: string,
+    options: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T>> {
     const response: AxiosResponse<T> = await this.axios.get(endpoint, options);
-    return response.data;
+    return response;
   }
 
   async post<T, D = any>(
     endpoint: string,
-    data: D,
+    data?: D,
     options: AxiosRequestConfig = {},
   ): Promise<T> {
     const response: AxiosResponse<T> = await this.axios.post(
