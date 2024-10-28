@@ -1,6 +1,12 @@
-import { checkAuth, logoutThunk, selectAuth } from '@/entities/viewer';
+import {
+  checkAuth,
+  logoutThunk,
+  selectAuth,
+  selectLoading,
+} from '@/entities/viewer';
 import clsx from 'clsx';
 import { useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
@@ -11,6 +17,7 @@ import classes from './auth.module.scss';
 export const Auth = () => {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector(selectAuth);
+  const isLoading = useAppSelector(selectLoading);
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -18,16 +25,23 @@ export const Auth = () => {
 
   return (
     <div className={classes.container}>
-      {isAuth ? (
-        <button
-          onClick={() => {
-            dispatch(logoutThunk());
-          }}
-        >
-          Выйти
-        </button>
+      {isLoading ? (
+        <Skeleton className={classes.skeleton} />
       ) : (
-        <AuthButtons />
+        <>
+          {isAuth ? (
+            <button
+              onClick={() => {
+                dispatch(logoutThunk());
+              }}
+              className={classes.exit}
+            >
+              Выйти
+            </button>
+          ) : (
+            <AuthButtons />
+          )}
+        </>
       )}
     </div>
   );

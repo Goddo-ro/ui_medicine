@@ -1,7 +1,6 @@
-import { login as loginAction } from '@/entities/viewer';
+import { loginThunk } from '@/entities/viewer';
 import { useState } from 'react';
 
-import { login } from '@/pages/login/api/login';
 import { loginData } from '@/pages/login/model/login-schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
@@ -16,9 +15,7 @@ export const LoginPage = () => {
   const dispatch = useAppDispatch();
 
   const handleLogin = (email: string, password: string) => {
-    login(email, password).then(() => {
-      dispatch(loginAction());
-    });
+    dispatch(loginThunk({ email, password }));
   };
 
   const validate = (formData: FormData) => {

@@ -15,5 +15,5 @@ export const selectAuth = createSelector(
 
 export const selectLoading = createSelector(
   selectBase,
-  (state: IAuthState) => state.isAuth,
+  (state: IAuthState) => state.isLoading,
 );

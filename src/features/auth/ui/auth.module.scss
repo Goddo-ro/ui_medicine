@@ -2,4 +2,17 @@
   display: flex;
   align-items: center;
   gap: 16px;
+
+  .exit {
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $danger-color;
+    color: $danger-color;
+    padding: 0;
+  }
+
+  .skeleton {
+    width: 150px;
+  }
 }
