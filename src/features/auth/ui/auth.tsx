@@ -1,4 +1,4 @@
-import { checkAuth, logout, selectAuth } from '@/entities/viewer';
+import { checkAuth, logoutThunk, selectAuth } from '@/entities/viewer';
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const Auth = () => {
       {isAuth ? (
         <button
           onClick={() => {
-            logout();
+            dispatch(logoutThunk());
           }}
         >
           Выйти
@@ -37,13 +37,13 @@ const AuthButtons = () => {
   return (
     <>
       <Link to={ERoute.login} className={classes.button}>
-        Войти
+        Логин
       </Link>
       <Link
         to={ERoute.register}
         className={clsx(classes.button, classes.danger)}
       >
-        Зарегистрироваться
+        Регистрация
       </Link>
     </>
   );

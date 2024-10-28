@@ -1,9 +1,9 @@
-import { checkAuth } from '@/entities/viewer/model/thunks';
+import { checkAuth, logoutThunk } from '@/entities/viewer/model/thunks';
 import { IAuthState } from '@/entities/viewer/model/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isAuth: true,
+  isAuth: false,
   isLoading: false,
 } satisfies IAuthState as IAuthState;
 
@@ -11,6 +11,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    login: (state) => {
+      state.isAuth = true;
+    },
     logout: (state) => {
       state.isAuth = false;
     },
@@ -26,9 +29,19 @@ const authSlice = createSlice({
       })
       .addCase(checkAuth.rejected, (state) => {
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logoutThunk.fulfilled, (state, action) => {
+        state.isAuth = !action.payload;
+        state.isLoading = false;
+      })
+      .addCase(logoutThunk.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 });
 
 export const AuthReducer = authSlice.reducer;
-export const { logout } = authSlice.actions;
+export const { login, logout } = authSlice.actions;

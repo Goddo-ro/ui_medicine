@@ -3,9 +3,15 @@ import { AUTH_BASE_URL } from '@/shared/consts/authBaseURL';
 
 import { IData, ILogin } from './types';
 
-export const login = (email: string, password: string): Promise<ILogin> => {
-  return apiInstance.post<ILogin, IData>(`${AUTH_BASE_URL}/login`, {
-    email,
-    password,
-  });
+export const login = (email: string, password: string) => {
+  return apiInstance.post<ILogin, IData>(
+    `${AUTH_BASE_URL}/login`,
+    {
+      email,
+      password,
+    },
+    {
+      withCredentials: true,
+    },
+  );
 };

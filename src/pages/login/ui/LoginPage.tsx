@@ -1,8 +1,11 @@
+import { login as loginAction } from '@/entities/viewer';
 import { useState } from 'react';
 
+import { login } from '@/pages/login/api/login';
 import { loginData } from '@/pages/login/model/login-schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
+import { useAppDispatch } from '@/shared/lib/store';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
@@ -10,13 +13,20 @@ import { errorParser } from '@/shared/zod/errorParser';
 
 export const LoginPage = () => {
   const [errors, setErrors] = useState<IFieldError[]>([]);
+  const dispatch = useAppDispatch();
+
+  const handleLogin = (email: string, password: string) => {
+    login(email, password).then(() => {
+      dispatch(loginAction());
+    });
+  };
 
   const validate = (formData: FormData) => {
     const data = Object.fromEntries(formData.entries());
     try {
-      loginData.parse(data);
+      const { email, password } = loginData.parse(data);
       setErrors([]);
-      console.debug('Successful parse');
+      handleLogin(email, password);
     } catch (error: unknown) {
       errorParser(
         error,

@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export const API_URL = 'http://127.0.0.1:8080/api/';
+axios.defaults.withCredentials = true;
 
 class ApiInstance {
   private axios: AxiosInstance;
@@ -10,8 +11,11 @@ class ApiInstance {
       baseURL: API_URL,
       timeout: 120000,
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': '*',
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     });
   }
 
@@ -27,37 +31,37 @@ class ApiInstance {
     endpoint: string,
     data?: D,
     options: AxiosRequestConfig = {},
-  ): Promise<T> {
+  ): Promise<AxiosResponse<T>> {
     const response: AxiosResponse<T> = await this.axios.post(
       endpoint,
       data,
       options,
     );
-    return response.data;
+    return response;
   }
 
   async put<T, D = any>(
     endpoint: string,
     data: D,
     options: AxiosRequestConfig = {},
-  ): Promise<T> {
+  ): Promise<AxiosResponse<T>> {
     const response: AxiosResponse<T> = await this.axios.put(
       endpoint,
       data,
       options,
     );
-    return response.data;
+    return response;
   }
 
   async delete<T>(
     endpoint: string,
     options: AxiosRequestConfig = {},
-  ): Promise<T> {
+  ): Promise<AxiosResponse<T>> {
     const response: AxiosResponse<T> = await this.axios.delete(
       endpoint,
       options,
     );
-    return response.data;
+    return response;
   }
 }
 
