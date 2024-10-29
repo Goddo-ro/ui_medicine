@@ -17,7 +17,11 @@ export interface ILogin {
   };
 }
 
-export interface IData {
+export interface IRegister {
+  readonly message: string;
+}
+
+export interface IAuthData {
   readonly email: string;
   readonly password: string;
 }

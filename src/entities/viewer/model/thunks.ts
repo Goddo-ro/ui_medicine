@@ -1,5 +1,10 @@
-import { isLoggedIn, login, logout } from '@/entities/viewer/api/auth';
-import { IData } from '@/entities/viewer/model/types';
+import {
+  isLoggedIn,
+  login,
+  logout,
+  register,
+} from '@/entities/viewer/api/auth';
+import { IAuthData } from '@/entities/viewer/model/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const checkAuth = createAsyncThunk(
@@ -36,9 +41,25 @@ export const logoutThunk = createAsyncThunk(
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
-  async ({ email, password }: IData, { rejectWithValue }) => {
+  async ({ email, password }: IAuthData, { rejectWithValue }) => {
     try {
       const response = await login(email, password);
+      if (response.status !== 200) {
+        return false;
+      }
+      return true;
+    } catch (error) {
+      const knowError = error as Error;
+      return rejectWithValue('Error: ' + knowError.message);
+    }
+  },
+);
+
+export const registerThunk = createAsyncThunk(
+  'auth/register',
+  async ({ email, password }: IAuthData, { rejectWithValue }) => {
+    try {
+      const response = await register(email, password);
       if (response.status !== 200) {
         return false;
       }

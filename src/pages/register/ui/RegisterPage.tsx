@@ -1,11 +1,12 @@
-import { selectAuth } from '@/entities/viewer';
+import { registerThunk, selectAuth } from '@/entities/viewer';
+import { IAuthData, IRegister } from '@/entities/viewer/model/types';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import { registerData } from '@/pages/register/model/register.schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
-import { useAppSelector } from '@/shared/lib/store';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { ERoute } from '@/shared/routes/routes';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
@@ -15,15 +16,24 @@ import { errorParser } from '@/shared/zod/errorParser';
 export const RegisterPage = () => {
   const [errors, setErrors] = useState<IFieldError[]>([]);
 
+  const dispatch = useAppDispatch();
   const isAuth = useAppSelector(selectAuth);
+  const navigate = useNavigate();
 
-  if (!isAuth) return <Navigate to={ERoute.medkit} replace />;
+  if (isAuth) return <Navigate to={ERoute.medkit} replace />;
+
+  const handleRegister = (email: string, password: string) => {
+    dispatch(registerThunk({ email, password })).then(() => {
+      navigate(ERoute.login);
+    });
+  };
 
   const validate = (formData: FormData) => {
     const data = Object.fromEntries(formData.entries());
     try {
-      registerData.parse(data);
+      const { email, password } = registerData.parse(data);
       setErrors([]);
+      handleRegister(email, password);
       console.debug('Successful parse');
     } catch (error: unknown) {
       errorParser(
