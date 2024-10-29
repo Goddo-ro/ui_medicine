@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, RouteProps, Routes } from 'react-router-dom';
+import { Route, RouteProps, Routes } from 'react-router-dom';
 
 import { Diseases } from '@/pages/diseases';
 import { LoginPage } from '@/pages/login';
@@ -8,6 +8,8 @@ import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
 import { ERoute } from '@/shared/routes/routes';
+
+// TODO: add protected routes
 
 const routesList: RouteProps[] = [
   {
@@ -38,12 +40,10 @@ export const AppRouter = () => {
   ));
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Root />}>
-          {routes}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Root />}>
+        {routes}
+      </Route>
+    </Routes>
   );
 };

@@ -1,10 +1,12 @@
-import { loginThunk } from '@/entities/viewer';
+import { loginThunk, selectAuth } from '@/entities/viewer';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { loginData } from '@/pages/login/model/login-schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
-import { useAppDispatch } from '@/shared/lib/store';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
+import { ERoute } from '@/shared/routes/routes';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
@@ -12,7 +14,11 @@ import { errorParser } from '@/shared/zod/errorParser';
 
 export const LoginPage = () => {
   const [errors, setErrors] = useState<IFieldError[]>([]);
+
   const dispatch = useAppDispatch();
+  const isAuth = useAppSelector(selectAuth);
+
+  if (isAuth) return <Navigate to={ERoute.medkit} replace />;
 
   const handleLogin = (email: string, password: string) => {
     dispatch(loginThunk({ email, password }));
