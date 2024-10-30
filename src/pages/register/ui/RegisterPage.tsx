@@ -1,5 +1,4 @@
 import { registerThunk, selectAuth } from '@/entities/viewer';
-import { IAuthData, IRegister } from '@/entities/viewer/model/types';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
