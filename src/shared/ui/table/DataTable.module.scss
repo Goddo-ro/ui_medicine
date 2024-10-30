@@ -1,0 +1,34 @@
+$green-color: rgba(208, 247, 169, 0.4);
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+.table {
+  width: 100%;
+  height: 100%;
+  padding-top: 16px;
+  border-collapse: collapse;
+  border-radius: 16px;
+  background-color: #fff;
+  padding-bottom: 4px;
+
+  :global(.rc-table-title) {
+    margin-inline: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+  }
+
+  :global(.rc-table-thead) {
+    background: $green-color;
+  }
+
+  :global(.rc-table-row) {
+    box-shadow: $shadow-color 0px 1px 2px;
+  }
+
+  :global(.rc-table-cell) {
+    padding: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    align-items: center;
+    text-align: center;
+  }
+}

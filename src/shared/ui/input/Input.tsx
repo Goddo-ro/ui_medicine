@@ -4,7 +4,7 @@ import { InputHTMLAttributes, useState } from 'react';
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   error?: string;
   containerClassname?: string;
 }
