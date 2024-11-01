@@ -11,6 +11,9 @@
     background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: 16px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
 
     .form__title {
       text-align: center;
