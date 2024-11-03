@@ -10,7 +10,15 @@ body,
   font-family: 'Roboto', sans-serif !important;
 }
 
-* {
+h1,
+h2,
+h3,
+h4,
+p,
+b,
+div,
+span,
+a {
   box-sizing: border-box;
   color: $main-text-color;
 }

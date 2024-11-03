@@ -1,6 +1,8 @@
 $green-color: rgba(208, 247, 169, 0.4);
 $shadow-color: rgba(0, 0, 0, 0.1);
 $inline-padding: 3rem;
+$toolbar-height: 20px;
+$toolbar-margin-bottom: 1rem;
 
 .container {
   width: 100%;
@@ -9,15 +11,30 @@ $inline-padding: 3rem;
   border-radius: 16px;
   background-color: #fff;
 
+  .tableContainer {
+    height: calc(100% - $toolbar-height - $toolbar-margin-bottom);
+    overflow: hidden;
+
+    :global(.MuiDataGrid-root) {
+      border: none;
+    }
+  }
+
   .toolbar {
     gap: 2rem;
     padding-inline: $inline-padding;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: $toolbar-margin-bottom;
+    height: $toolbar-height;
+    box-sizing: border-box;
 
     .toolbar__buttons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
       button {
         min-width: 0;
         padding: 0;
@@ -25,7 +42,7 @@ $inline-padding: 3rem;
     }
   }
 
-  .table__header > * {
+  :global(.MuiDataGrid-columnHeader) {
     background: $green-color;
   }
 

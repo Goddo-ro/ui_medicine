@@ -1,36 +1,61 @@
-import { IMedicine } from '@/entities/medicine';
+import { ITransaction } from '@/entities/transaction';
 
 import { formatDate } from '@/shared/lib/date';
-import { Column } from '@/shared/ui/table/DataTable';
 
-// TODO: parse date
+import { GridColDef } from '@mui/x-data-grid';
 
-export const columns: Column[] = [
+export const columns: GridColDef<ITransaction>[] = [
   {
-    row_id: 'id',
-    label: 'ID',
+    field: 'id',
+    headerName: 'ID',
+    headerAlign: 'left',
+    align: 'left',
+    type: 'number',
+    minWidth: 100,
   },
   {
-    row_id: 'medicine',
-    label: 'Название',
-    render: (medicine: IMedicine) => <b>{medicine.title}</b>,
+    field: 'medicine_id',
+    headerName: 'ID Лекарства',
+    headerAlign: 'left',
+    align: 'left',
+    type: 'number',
+    minWidth: 200,
   },
   {
-    row_id: 'medicine_id',
-    label: 'ID Лекарства',
+    field: 'medicine',
+    headerName: 'Лекарство',
+    headerAlign: 'left',
+    align: 'left',
+    renderCell: (params) => {
+      return <b>{params.row.medicine?.title || 'Нет названия'}</b>;
+    },
+    minWidth: 200,
+    flex: 1,
   },
   {
-    row_id: 'count',
-    label: 'Количество',
+    field: 'count',
+    headerName: 'Количество',
+    headerAlign: 'left',
+    align: 'left',
+    type: 'number',
+    minWidth: 200,
   },
   {
-    row_id: 'purchase_date',
-    label: 'Приобретение',
-    render: (date: string) => formatDate(date),
+    field: 'purchase_date',
+    headerName: 'Дата приобретения',
+    headerAlign: 'left',
+    align: 'left',
+    valueFormatter: formatDate,
+    minWidth: 200,
+    flex: 1,
   },
   {
-    row_id: 'expiration_date',
-    label: 'Истечение срока',
-    render: (date: string) => formatDate(date),
+    field: 'expiration_date',
+    headerName: 'Истечение срока',
+    headerAlign: 'left',
+    align: 'left',
+    valueFormatter: formatDate,
+    minWidth: 200,
+    flex: 1,
   },
 ];

@@ -26,6 +26,12 @@ export default tseslint.config(
       ],
       semi: ['warn', 'always'],
       'object-curly-spacing': ['warn', 'always'],
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['@mui/*/*/*'],
+        },
+      ],
     },
   },
   eslintConfigPrettier,

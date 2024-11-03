@@ -11,16 +11,18 @@ import { useAppSelector } from '@/shared/lib/store';
 import { ERoute } from '@/shared/routes/routes';
 import { DataTable } from '@/shared/ui/table/DataTable';
 
+import { GridToolbar } from '@mui/x-data-grid';
+
 import classes from './Medkit.module.scss';
 
 // TODO: create UI component for errors
-// TODO: responsive table with scroll
 // TODO: refactor Skeleton theme
 
 export const Medkit = () => {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(true);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const isAuth = useAppSelector(selectAuth);
 
@@ -48,6 +50,8 @@ export const Medkit = () => {
 
   if (!isAuth) return <Navigate to={ERoute.login} replace />;
 
+  // TODO: configure export
+
   return (
     <>
       <MedkitAddDialog
@@ -70,7 +74,36 @@ export const Medkit = () => {
             onAdd: () => {
               setIsAddDialogOpen(true);
             },
+            onEdit: () => {
+              console.debug('EDIT');
+            },
+            disableEdit: selectedIds.length !== 1,
+            onDelete: () => {
+              console.debug('DELETE');
+            },
+            disableDelete: !selectedIds.length,
           }}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 15,
+              },
+            },
+          }}
+          checkboxSelection
+          onRowSelectionModelChange={(ids) => {
+            setSelectedIds(ids.map((id) => Number.parseInt(id.toString())));
+          }}
+          slots={{
+            toolbar: GridToolbar,
+          }}
+          slotProps={{
+            toolbar: {
+              style: { marginBottom: 8 },
+              showQuickFilter: true,
+            },
+          }}
+          pageSizeOptions={[15, 25]}
         />
       </div>
     </>
