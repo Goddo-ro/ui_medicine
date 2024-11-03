@@ -1,13 +1,14 @@
 import { ITransaction, getTransactions } from '@/entities/transaction';
+import { createTransaction } from '@/entities/transaction/api/transaction';
 import { selectAuth } from '@/entities/viewer';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { columns, skeletonData } from '@/pages/medkit/model/consts';
+import { columns } from '@/pages/medkit/model/consts';
+import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
 import { useAppSelector } from '@/shared/lib/store';
 import { ERoute } from '@/shared/routes/routes';
-import { Input } from '@/shared/ui/input/Input';
 import { DataTable } from '@/shared/ui/table/DataTable';
 
 import classes from './Medkit.module.scss';
@@ -17,12 +18,13 @@ import classes from './Medkit.module.scss';
 // TODO: refactor Skeleton theme
 
 export const Medkit = () => {
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
 
   const isAuth = useAppSelector(selectAuth);
 
-  useEffect(() => {
+  const fetchTransactions = useCallback(() => {
     if (!isAuth) return;
     setIsLoading(true);
     getTransactions()
@@ -34,32 +36,43 @@ export const Medkit = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetchTransactions();
+  }, [fetchTransactions]);
+
+  const handleAdd = (transaction: ITransaction) => {
+    createTransaction(transaction).then(() => {
+      fetchTransactions();
+    });
+  };
+
   if (!isAuth) return <Navigate to={ERoute.login} replace />;
 
   return (
-    <div className={classes.container}>
-      <DataTable
-        title={() => (
-          <div className={classes.header}>
-            <h3 className={classes.header__title}>Ваши транзакции</h3>
-            {/* <Input containerClassname={classes.header__search} label='' /> */}
-          </div>
-        )}
-        columns={columns}
-        data={
-          isLoading
-            ? [skeletonData]
-            : // : Array(5)
-              //     .fill(0)
-              //     .map((_) => transactions[0])
-              transactions
-        }
-        tableLayout='auto'
-        expandable={{
-          defaultExpandAllRows: true,
+    <>
+      <MedkitAddDialog
+        onAdd={handleAdd}
+        open={isAddDialogOpen}
+        close={() => {
+          setIsAddDialogOpen(false);
         }}
-        rowKey={(record) => record.id}
+        onClose={() => {
+          setIsAddDialogOpen(false);
+        }}
       />
-    </div>
+      <div className={classes.container}>
+        <DataTable
+          columns={columns}
+          rows={transactions}
+          isLoading={isLoading}
+          toolbarProps={{
+            title: <h3>Приобретенные лекарства</h3>,
+            onAdd: () => {
+              setIsAddDialogOpen(true);
+            },
+          }}
+        />
+      </div>
+    </>
   );
 };

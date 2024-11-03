@@ -1,10 +1,4 @@
-import { BaseQueryFn } from '@reduxjs/toolkit/query';
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export const API_URL = 'http://127.0.0.1:8080/api/';
 axios.defaults.withCredentials = true;

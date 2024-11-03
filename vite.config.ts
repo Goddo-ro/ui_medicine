@@ -18,18 +18,21 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    include: ['date-fns'],
+  },
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        cookiePathRewrite: {
-          '*': '/',
-        },
-        secure: false,
-        cookieDomainRewrite: '',
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:8080',
+    //     changeOrigin: true,
+    //     cookiePathRewrite: {
+    //       '*': '/',
+    //     },
+    //     secure: false,
+    //     cookieDomainRewrite: '',
+    //   },
+    // },
   },
 });

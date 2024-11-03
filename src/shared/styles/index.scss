@@ -24,6 +24,7 @@ body,
     flex: 2;
     padding: $content-vertical-padding $content-inline-padding;
     position: relative;
+    overflow: hidden;
   }
 }
 

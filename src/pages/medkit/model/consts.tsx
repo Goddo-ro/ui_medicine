@@ -1,63 +1,36 @@
 import { IMedicine } from '@/entities/medicine';
-import { ITransaction } from '@/entities/transaction';
-import { ColumnType } from 'rc-table';
-import Skeleton from 'react-loading-skeleton';
+
+import { formatDate } from '@/shared/lib/date';
+import { Column } from '@/shared/ui/table/DataTable';
 
 // TODO: parse date
 
-type TransactionSkeleton = {
-  [K in keyof ITransaction]: React.ReactNode | { title: React.ReactNode };
-};
-
-export const skeletonData: TransactionSkeleton = {
-  id: <Skeleton />,
-  medicine_id: <Skeleton />,
-  count: <Skeleton />,
-  purchase_date: <Skeleton />,
-  expiration_date: <Skeleton />,
-  medicine: { title: <Skeleton /> },
-};
-
-export const columns: ColumnType<ITransaction | TransactionSkeleton>[] = [
+export const columns: Column[] = [
   {
-    title: 'ID',
-    dataIndex: 'id',
-    key: 'id',
-    minWidth: 100,
+    row_id: 'id',
+    label: 'ID',
   },
   {
-    title: 'Название',
-    dataIndex: 'medicine',
-    key: 'medicine',
-    render: (medicine?: IMedicine) =>
-      medicine ? medicine.title : 'No Medicines',
-    width: '50%',
-    minWidth: 200,
+    row_id: 'medicine',
+    label: 'Название',
+    render: (medicine: IMedicine) => <b>{medicine.title}</b>,
   },
   {
-    title: 'ID Лекарства',
-    dataIndex: 'medicine_id',
-    key: 'medicine_id',
-    minWidth: 120,
+    row_id: 'medicine_id',
+    label: 'ID Лекарства',
   },
   {
-    title: 'Количество',
-    dataIndex: 'count',
-    key: 'count',
-    minWidth: 75,
+    row_id: 'count',
+    label: 'Количество',
   },
   {
-    title: 'Приобретение',
-    dataIndex: 'purchase_date',
-    key: 'purchase_date',
-    minWidth: 200,
-    width: '25%',
+    row_id: 'purchase_date',
+    label: 'Приобретение',
+    render: (date: string) => formatDate(date),
   },
   {
-    title: 'Истечение срока',
-    dataIndex: 'expiration_date',
-    key: 'expiration_date',
-    minWidth: 200,
-    width: '25%',
+    row_id: 'expiration_date',
+    label: 'Истечение срока',
+    render: (date: string) => formatDate(date),
   },
 ];

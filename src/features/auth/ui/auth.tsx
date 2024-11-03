@@ -35,6 +35,7 @@ export const Auth = () => {
                 dispatch(logoutThunk());
               }}
               className={classes.exit}
+              aria-label='Exit'
             >
               Выйти
             </button>
