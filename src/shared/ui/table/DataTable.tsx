@@ -7,8 +7,6 @@ import { DataGrid, DataGridProps } from '@mui/x-data-grid';
 
 import classes from './DataTable.module.scss';
 
-// TODO: search input
-
 interface DataTableProps extends DataGridProps {
   toolbarProps?: DataTableToolbarProps;
 }

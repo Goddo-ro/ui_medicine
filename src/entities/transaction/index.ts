@@ -1,2 +1,7 @@
 export type { ITransaction } from './model/types';
-export { getTransactions } from './api/transaction';
+export {
+  getTransactions,
+  createTransaction,
+  deleteTransaction,
+  updateTransaction,
+} from './api/transaction';

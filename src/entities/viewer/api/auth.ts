@@ -6,7 +6,7 @@ import {
 } from '@/entities/viewer/model/types';
 
 import { apiInstance } from '@/shared/api/client';
-import { AUTH_BASE_URL } from '@/shared/consts/authBaseURL';
+import { AUTH_BASE_URL } from '@/shared/consts/baseURLs';
 
 export const isLoggedIn = () => {
   return apiInstance.get<IIsLoggedIn>(`${AUTH_BASE_URL}/isLoggedIn`);

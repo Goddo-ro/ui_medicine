@@ -1,9 +1,10 @@
-import { ITransaction, getTransactions } from '@/entities/transaction';
 import {
+  ITransaction,
   createTransaction,
   deleteTransaction,
+  getTransactions,
   updateTransaction,
-} from '@/entities/transaction/api/transaction';
+} from '@/entities/transaction';
 import { selectAuth } from '@/entities/viewer';
 import { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
