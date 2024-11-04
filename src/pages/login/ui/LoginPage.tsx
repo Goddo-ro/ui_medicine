@@ -41,6 +41,8 @@ export const LoginPage = () => {
     }
   };
 
+  // TODO: loader while auth checking
+
   return (
     <Form
       onSubmit={(e) => {

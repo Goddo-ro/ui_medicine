@@ -2,6 +2,7 @@ import { ITransaction, getTransactions } from '@/entities/transaction';
 import {
   createTransaction,
   deleteTransaction,
+  updateTransaction,
 } from '@/entities/transaction/api/transaction';
 import { selectAuth } from '@/entities/viewer';
 import { useCallback, useEffect, useState } from 'react';
@@ -65,9 +66,20 @@ export const Medkit = () => {
       });
   };
 
-  if (!isAuth) return <Navigate to={ERoute.login} replace />;
+  const handleUpdate = (newTransaction: ITransaction) => {
+    const selectedId = selectedIds[0];
+    if (selectedId === undefined) return;
+    setIsLoading(true);
+    updateTransaction(selectedId, newTransaction)
+      .then(() => {
+        fetchTransactions();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-  // TODO: configure export
+  if (!isAuth) return <Navigate to={ERoute.login} replace />;
 
   return (
     <>
@@ -80,6 +92,14 @@ export const Medkit = () => {
         onClose={() => {
           setIsAddDialogOpen(false);
         }}
+        onUpdate={handleUpdate}
+        transaction={
+          selectedIds?.length === 1
+            ? transactions.find(
+                (transaction) => transaction.id === selectedIds[0],
+              )
+            : undefined
+        }
       />
       <div className={classes.container}>
         <DataTable
@@ -92,7 +112,7 @@ export const Medkit = () => {
               setIsAddDialogOpen(true);
             },
             onEdit: () => {
-              console.debug('EDIT');
+              setIsAddDialogOpen(true);
             },
             disableEdit: selectedIds.length !== 1,
             onDelete: handleDelete,

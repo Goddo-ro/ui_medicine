@@ -14,3 +14,13 @@ export const createTransaction = (transaction: ITransaction) => {
 export const deleteTransaction = (transaction_id: number) => {
   return apiInstance.delete(`${TRANSACTION_BASE_URL}/${transaction_id}`);
 };
+
+export const updateTransaction = (
+  transaction_id: number,
+  transaction: ITransaction,
+) => {
+  return apiInstance.put(
+    `${TRANSACTION_BASE_URL}/${transaction_id}`,
+    transaction,
+  );
+};
