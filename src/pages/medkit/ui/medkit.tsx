@@ -1,5 +1,8 @@
 import { ITransaction, getTransactions } from '@/entities/transaction';
-import { createTransaction } from '@/entities/transaction/api/transaction';
+import {
+  createTransaction,
+  deleteTransaction,
+} from '@/entities/transaction/api/transaction';
 import { selectAuth } from '@/entities/viewer';
 import { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
@@ -48,6 +51,15 @@ export const Medkit = () => {
     });
   };
 
+  const handleDelete = () => {
+    const deletingPromises = selectedIds.map((id) => {
+      deleteTransaction(id);
+    });
+    Promise.all(deletingPromises).then(() => {
+      fetchTransactions();
+    });
+  };
+
   if (!isAuth) return <Navigate to={ERoute.login} replace />;
 
   // TODO: configure export
@@ -78,9 +90,7 @@ export const Medkit = () => {
               console.debug('EDIT');
             },
             disableEdit: selectedIds.length !== 1,
-            onDelete: () => {
-              console.debug('DELETE');
-            },
+            onDelete: handleDelete,
             disableDelete: !selectedIds.length,
           }}
           initialState={{

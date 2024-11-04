@@ -10,3 +10,7 @@ export const getTransactions = () => {
 export const createTransaction = (transaction: ITransaction) => {
   return apiInstance.post(`${TRANSACTION_BASE_URL}/`, transaction);
 };
+
+export const deleteTransaction = (transaction_id: number) => {
+  return apiInstance.delete(`${TRANSACTION_BASE_URL}/${transaction_id}`);
+};

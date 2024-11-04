@@ -1,3 +1,4 @@
+import { IMedicine } from '@/entities/medicine';
 import { ITransaction } from '@/entities/transaction';
 
 import { formatDate } from '@/shared/lib/date';
@@ -29,6 +30,8 @@ export const columns: GridColDef<ITransaction>[] = [
     renderCell: (params) => {
       return <b>{params.row.medicine?.title || 'Нет названия'}</b>;
     },
+    sortComparator: (m1: IMedicine, m2: IMedicine) =>
+      m1.title.localeCompare(m2.title),
     minWidth: 200,
     flex: 1,
   },
