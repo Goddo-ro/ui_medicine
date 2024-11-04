@@ -1,6 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-export const API_URL = 'http://127.0.0.1:8080/api/';
+export const API_URL = 'http://127.0.0.1:8080/api';
+export const BASE_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Credentials': '*',
+  'Content-Type': 'application/json',
+  credentials: 'include',
+};
 axios.defaults.withCredentials = true;
 
 // TODO: rewrite axios instance with RTK Query

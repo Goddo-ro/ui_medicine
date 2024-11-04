@@ -1,0 +1,25 @@
+.skeleton {
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .itemContainer {
+    display: flex;
+  }
+
+  .itemSkeleton {
+    height: 100px;
+    margin-bottom: 1em;
+    width: 2em;
+    height: 2.5em;
+  }
+
+  .itemList {
+    width: 100%;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+}

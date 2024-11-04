@@ -16,7 +16,6 @@ h3,
 h4,
 p,
 b,
-div,
 span,
 a {
   box-sizing: border-box;
@@ -32,7 +31,10 @@ a {
     flex: 2;
     padding: $content-vertical-padding $content-inline-padding;
     position: relative;
-    overflow: hidden;
+    margin-top: $header-height;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
   }
 }
 

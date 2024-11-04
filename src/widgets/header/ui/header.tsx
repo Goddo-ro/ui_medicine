@@ -18,6 +18,8 @@ export const Header = () => {
     </NavLink>
   ));
 
+  // TODO: add max width same as app content
+
   return (
     <header className={classes.header}>
       <div className={classes.header__title}>

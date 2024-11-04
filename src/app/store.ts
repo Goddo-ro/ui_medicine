@@ -1,10 +1,14 @@
+import { medicineApi } from '@/entities/medicine/api';
 import { AuthReducer } from '@/entities/viewer';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
+    [medicineApi.reducerPath]: medicineApi.reducer,
     auth: AuthReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(medicineApi.middleware),
 });
 
 export default store;

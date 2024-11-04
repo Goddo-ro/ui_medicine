@@ -2,7 +2,7 @@ import { Route, RouteProps, Routes } from 'react-router-dom';
 
 import { Diseases } from '@/pages/diseases';
 import { LoginPage } from '@/pages/login';
-import { Medicines } from '@/pages/medicines';
+import { Medicines } from '@/pages/medicine';
 import { Medkit } from '@/pages/medkit';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
