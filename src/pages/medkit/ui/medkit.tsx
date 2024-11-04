@@ -52,12 +52,17 @@ export const Medkit = () => {
   };
 
   const handleDelete = () => {
+    setIsLoading(true);
     const deletingPromises = selectedIds.map((id) => {
       deleteTransaction(id);
     });
-    Promise.all(deletingPromises).then(() => {
-      fetchTransactions();
-    });
+    Promise.all(deletingPromises)
+      .then(() => {
+        fetchTransactions();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   if (!isAuth) return <Navigate to={ERoute.login} replace />;
@@ -80,7 +85,7 @@ export const Medkit = () => {
         <DataTable
           columns={columns}
           rows={transactions}
-          isLoading={isLoading}
+          loading={isLoading}
           toolbarProps={{
             title: <h3>Приобретенные лекарства</h3>,
             onAdd: () => {

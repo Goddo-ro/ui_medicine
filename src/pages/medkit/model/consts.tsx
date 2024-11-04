@@ -30,6 +30,9 @@ export const columns: GridColDef<ITransaction>[] = [
     renderCell: (params) => {
       return <b>{params.row.medicine?.title || 'Нет названия'}</b>;
     },
+    valueGetter: (medicine: IMedicine) => {
+      return <b>{medicine.title}</b>;
+    },
     sortComparator: (m1: IMedicine, m2: IMedicine) =>
       m1.title.localeCompare(m2.title),
     minWidth: 200,
