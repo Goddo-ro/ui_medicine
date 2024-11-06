@@ -10,6 +10,10 @@ body,
   font-family: 'Roboto', sans-serif !important;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -33,8 +37,11 @@ a {
     position: relative;
     margin-top: $header-height;
     width: 100%;
-    max-width: 1000px;
     margin-inline: auto;
+  }
+
+  .app__content:not(:has(.unwidth)) {
+    max-width: $content-max-width;
   }
 }
 

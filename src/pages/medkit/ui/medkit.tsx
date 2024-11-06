@@ -6,6 +6,7 @@ import {
   updateTransaction,
 } from '@/entities/transaction';
 import { selectAuth } from '@/entities/viewer';
+import clsx from 'clsx';
 import { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -102,7 +103,7 @@ export const Medkit = () => {
             : undefined
         }
       />
-      <div className={classes.container}>
+      <div className={clsx(classes.container, 'unwidth')}>
         <DataTable
           columns={columns}
           rows={transactions}

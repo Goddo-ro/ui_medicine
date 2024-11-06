@@ -23,12 +23,14 @@ export const Header = () => {
 
   return (
     <header className={classes.header}>
-      <div className={classes.header__title}>
-        <img src={AppIcon} alt='MedWiki' />
-        <h1>MedWiki</h1>
+      <div className={classes.header__content}>
+        <div className={classes.header__title}>
+          <img src={AppIcon} alt='MedWiki' />
+          <h1>MedWiki</h1>
+        </div>
+        <nav className={classes.header__links}>{links}</nav>
+        <Auth />
       </div>
-      <nav className={classes.header__links}>{links}</nav>
-      <Auth />
     </header>
   );
 };

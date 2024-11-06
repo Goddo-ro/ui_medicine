@@ -8,8 +8,8 @@ export const MedicinePrefixesSkeleton = () => {
       <Skeleton />
       {Array(8)
         .fill(0)
-        .map(() => (
-          <div className={classes.itemContainer}>
+        .map((_, i) => (
+          <div className={classes.itemContainer} key={i}>
             <Skeleton className={classes.itemSkeleton} />
             <div className={classes.itemList}>
               <Skeleton />

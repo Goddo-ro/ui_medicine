@@ -24,6 +24,8 @@ export const MedkitAddDialog = ({
   transaction,
   ...rest
 }: MedkitAddDialogProps) => {
+  // TODO: add RTK Query
+  // TODO: fix datepickers overflowing
   const [medicines, setMedicines] = useState<IMedicine[]>([]);
   const [medicine, setMedicine] = useState<IMedicine | null>(
     transaction?.medicine || null,
