@@ -19,6 +19,7 @@ export const Header = () => {
   ));
 
   // TODO: add max width same as app content
+  // TODO: add searchbar
 
   return (
     <header className={classes.header}>
