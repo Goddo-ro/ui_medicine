@@ -1,0 +1,79 @@
+$active-color: #1f34f1;
+$border-color: rgba(0, 0, 0, 0.3);
+$prefix-color: rgba(0, 0, 0, 0.2);
+$gap: 0.25em;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+
+  ul {
+    background: #fff;
+    border: 1px solid $border-color;
+  }
+
+  li:not(:last-child) .singleLetters__letter,
+  li:not(:last-child) .prefixes__prefix {
+    border-right: 1px solid $border-color;
+  }
+
+  .singleLetters,
+  .prefixes {
+    border-radius: 4px;
+    width: fit-content;
+    border-collapse: collapse;
+    display: flex;
+    align-items: center;
+  }
+
+  .singleLetters__letter,
+  .prefixes__prefix {
+    display: block;
+    padding: $gap;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .active,
+  .singleLetters__letter:hover,
+  .singleLetters__letter:focus,
+  .prefixes__prefix:hover,
+  .prefixes__prefix:focus {
+    background-color: $active-color;
+    color: #fff;
+  }
+
+  .prefixes__prefix {
+    font-size: 0.75em;
+  }
+
+  .singleLetters {
+    .singleLetters__letter {
+      font-size: 1em;
+    }
+  }
+}
+
+.body {
+  .prefix {
+    font-size: 20px;
+    font-weight: bold;
+    color: $prefix-color;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $prefix-color;
+      margin: 0 10px;
+    }
+  }
+}

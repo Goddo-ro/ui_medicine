@@ -54,6 +54,8 @@ export const Medkit = () => {
     });
   };
 
+  // TODO: search by medicine title
+
   const handleDelete = () => {
     setIsLoading(true);
     const deletingPromises = selectedIds.map((id) => {

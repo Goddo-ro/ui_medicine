@@ -20,11 +20,21 @@ export const medicineApi = createApi({
       query: (body) => ({
         url: '/',
         method: 'GET',
-        body,
+        params: body,
       }),
     }),
-    getMedicinePrefixes: builder.query<IPrefix[], void>({
+    getMedicinePrefixes: builder.query<IPrefix, void>({
       query: () => `/prefixes`,
+    }),
+    getMedicinePrefixesWords: builder.query<
+      IPrefix,
+      Omit<IGetMedicineBody, 'search'>
+    >({
+      query: (params) => ({
+        url: '/prefixes/words',
+        method: 'GET',
+        params,
+      }),
     }),
     getMedicineById: builder.query<IMedicine, number>({
       query: (medicine_id) => `/${medicine_id}`,
@@ -35,5 +45,6 @@ export const medicineApi = createApi({
 export const {
   useGetMedicineQuery,
   useGetMedicinePrefixesQuery,
+  useGetMedicinePrefixesWordsQuery,
   useGetMedicineByIdQuery,
 } = medicineApi;

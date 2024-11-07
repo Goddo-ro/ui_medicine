@@ -4,6 +4,7 @@ import { Diseases } from '@/pages/diseases';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicine';
 import { Medkit } from '@/pages/medkit';
+import { Pointer } from '@/pages/pointer';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
@@ -15,6 +16,10 @@ const routesList: RouteProps[] = [
   {
     path: ERoute.medicines,
     element: <Medicines />,
+  },
+  {
+    path: ERoute.pointer,
+    element: <Pointer />,
   },
   {
     path: ERoute.diseases,
