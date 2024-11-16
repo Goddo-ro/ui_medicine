@@ -13,38 +13,34 @@ export const PointerHeader = () => {
 
   const { letter } = useParams();
 
-  const letters = Object.keys(prefixes ?? {});
-  const letterPrefixes = prefixes && letter ? prefixes[letter] : [];
+  const letters = Object.keys(prefixes ?? {}).map((letter) => (
+    <li key={letter}>
+      <NavLink
+        to={'/' + letter}
+        className={({ isActive }) =>
+          clsx({ [classes.active]: isActive }, classes.singleLetters__letter)
+        }
+      >
+        {letter}
+      </NavLink>
+    </li>
+  ));
+
+  const letterPrefixes = (
+    prefixes && letter ? (prefixes[letter] ?? []) : []
+  ).map((prefix) => (
+    <li key={prefix}>
+      <HashLink to={'#' + prefix} className={classes.prefixes__prefix}>
+        {prefix}
+      </HashLink>
+    </li>
+  ));
 
   return (
     <div>
       <nav className={classes.nav}>
-        <ul className={classes.singleLetters}>
-          {letters.map((letter) => (
-            <li key={letter}>
-              <NavLink
-                to={'/' + letter}
-                className={({ isActive }) =>
-                  clsx(
-                    { [classes.active]: isActive },
-                    classes.singleLetters__letter,
-                  )
-                }
-              >
-                {letter}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-        <ul className={classes.prefixes}>
-          {letterPrefixes.map((prefix) => (
-            <li key={prefix}>
-              <HashLink to={'#' + prefix} className={classes.prefixes__prefix}>
-                {prefix}
-              </HashLink>
-            </li>
-          ))}
-        </ul>
+        <ul className={classes.singleLetters}>{letters}</ul>
+        <ul className={classes.prefixes}>{letterPrefixes}</ul>
       </nav>
     </div>
   );

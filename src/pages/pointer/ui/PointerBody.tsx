@@ -9,6 +9,8 @@ export const PointerBody = () => {
 
   const { data } = useGetMedicinePrefixesWordsQuery({ startsWith: letter });
 
+  // TODO fix rendering of large data
+
   return (
     <div className={classes.body}>
       {Object.entries(data ?? {}).map(([prefix, words]) => (
@@ -16,11 +18,17 @@ export const PointerBody = () => {
           <h2 className={classes.prefix} id={prefix}>
             {prefix}
           </h2>
-          {words.map((word) => (
-            <Link to={'#'} key={'word'}>
-              {word}
-            </Link>
-          ))}
+          <div className={classes.words}>
+            {words.map((word) => (
+              <Link
+                to={'/medicine/' + word}
+                key={'word'}
+                className={classes.medicineLink}
+              >
+                {word}
+              </Link>
+            ))}
+          </div>
         </div>
       ))}
     </div>

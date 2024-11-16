@@ -39,6 +39,15 @@ export const medicineApi = createApi({
     getMedicineById: builder.query<IMedicine, number>({
       query: (medicine_id) => `/${medicine_id}`,
     }),
+    getMedicineByTitle: builder.query<IMedicine, string>({
+      query: (title) => ({
+        url: `/title`,
+        method: 'GET',
+        params: {
+          title: encodeURIComponent(title),
+        },
+      }),
+    }),
   }),
 });
 
@@ -47,4 +56,6 @@ export const {
   useGetMedicinePrefixesQuery,
   useGetMedicinePrefixesWordsQuery,
   useGetMedicineByIdQuery,
+  useGetMedicineByTitleQuery,
+  useLazyGetMedicineByTitleQuery,
 } = medicineApi;

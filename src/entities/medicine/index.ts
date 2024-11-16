@@ -4,4 +4,6 @@ export {
   useGetMedicineByIdQuery,
   useGetMedicinePrefixesQuery,
   useGetMedicinePrefixesWordsQuery,
+  useGetMedicineByTitleQuery,
+  useLazyGetMedicineByTitleQuery,
 } from './api';

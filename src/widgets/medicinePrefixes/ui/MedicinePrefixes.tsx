@@ -18,7 +18,7 @@ export const MedicinePrefixes = () => {
           <ul className={classes.header}>
             {singleLetters.map((letter) => (
               <li key={letter}>
-                <Link to={'/' + letter}>{letter}</Link>
+                <Link to={`/${letter}`}>{letter}</Link>
               </li>
             ))}
           </ul>
@@ -27,9 +27,9 @@ export const MedicinePrefixes = () => {
               <li className={classes.letterItem} key={letter + i}>
                 <h2 className={classes.letterItem__title}>{letter}</h2>
                 <ul className={classes.letterItem__letters}>
-                  {prefixes.map((letter) => (
-                    <li className={classes.letterItem__letter} key={letter}>
-                      <Link to='#'>{letter}</Link>
+                  {prefixes.map((prefix) => (
+                    <li className={classes.letterItem__letter} key={prefix}>
+                      <Link to={`/${letter}#${prefix}`}>{prefix}</Link>
                     </li>
                   ))}
                 </ul>

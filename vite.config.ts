@@ -22,7 +22,7 @@ export default defineConfig({
     include: ['date-fns'],
   },
   server: {
-    port: 3000,
+    port: 80,
     // proxy: {
     //   '/api': {
     //     target: 'http://localhost:8080',

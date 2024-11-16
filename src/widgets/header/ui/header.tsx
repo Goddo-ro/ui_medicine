@@ -18,7 +18,6 @@ export const Header = () => {
     </NavLink>
   ));
 
-  // TODO: add max width same as app content
   // TODO: add searchbar
 
   return (
