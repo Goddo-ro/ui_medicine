@@ -2,7 +2,7 @@ import { useLazyGetMedicineByIdQuery } from '@/entities/medicine';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { CircularProgress, Skeleton } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 
 import classes from './MedicineInfo.module.scss';
 

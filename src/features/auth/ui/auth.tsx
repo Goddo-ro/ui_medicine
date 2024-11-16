@@ -6,11 +6,12 @@ import {
 } from '@/entities/viewer';
 import clsx from 'clsx';
 import { useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { ERoute } from '@/shared/routes/routes';
+
+import { Skeleton } from '@mui/material';
 
 import classes from './auth.module.scss';
 

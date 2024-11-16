@@ -22,7 +22,6 @@ import { GridToolbar } from '@mui/x-data-grid';
 import classes from './Medkit.module.scss';
 
 // TODO: create UI component for errors
-// TODO: refactor Skeleton theme
 
 export const Medkit = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);

@@ -1,4 +1,4 @@
-import Skeleton from 'react-loading-skeleton';
+import { Skeleton } from '@mui/material';
 
 import classes from './MedicinePrefixesSkeleton.module.scss';
 
