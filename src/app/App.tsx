@@ -5,6 +5,7 @@ import { AppRouter } from '@/app/router';
 // TODO: change app icon
 // TODO: rewrite files name
 // TODO: pages lazy loading
+// TODO: replace all skeletons with mui skeleton
 
 function App() {
   return (

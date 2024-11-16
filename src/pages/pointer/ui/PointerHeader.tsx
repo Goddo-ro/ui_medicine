@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
+import { IPointerParams } from '@/pages/pointer/ui/Pointer';
+
 import classes from './Pointer.module.scss';
 
 // TODO: add skeletons
@@ -11,12 +13,12 @@ import classes from './Pointer.module.scss';
 export const PointerHeader = () => {
   const { data: prefixes } = useGetMedicinePrefixesQuery();
 
-  const { letter } = useParams();
+  const { letter } = useParams<IPointerParams>();
 
   const letters = Object.keys(prefixes ?? {}).map((letter) => (
     <li key={letter}>
       <NavLink
-        to={'/' + letter}
+        to={`/${letter}`}
         className={({ isActive }) =>
           clsx({ [classes.active]: isActive }, classes.singleLetters__letter)
         }
@@ -30,7 +32,7 @@ export const PointerHeader = () => {
     prefixes && letter ? (prefixes[letter] ?? []) : []
   ).map((prefix) => (
     <li key={prefix}>
-      <HashLink to={'#' + prefix} className={classes.prefixes__prefix}>
+      <HashLink to={`#${prefix}`} className={classes.prefixes__prefix}>
         {prefix}
       </HashLink>
     </li>

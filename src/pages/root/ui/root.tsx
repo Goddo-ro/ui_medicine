@@ -4,12 +4,12 @@ import { Outlet } from 'react-router-dom';
 
 export const Root = () => {
   return (
-    <main className='app'>
+    <div className='app'>
       <Header />
-      <section className='app__content'>
+      <main className='app__content'>
         <Outlet />
-      </section>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };

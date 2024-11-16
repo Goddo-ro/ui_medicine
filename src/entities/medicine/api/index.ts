@@ -2,6 +2,7 @@ import {
   IGetMedicineBody,
   IMedicine,
   IPrefix,
+  IPrefixWords,
 } from '@/entities/medicine/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -27,7 +28,7 @@ export const medicineApi = createApi({
       query: () => `/prefixes`,
     }),
     getMedicinePrefixesWords: builder.query<
-      IPrefix,
+      IPrefixWords,
       Omit<IGetMedicineBody, 'search'>
     >({
       query: (params) => ({
@@ -58,4 +59,5 @@ export const {
   useGetMedicineByIdQuery,
   useGetMedicineByTitleQuery,
   useLazyGetMedicineByTitleQuery,
+  useLazyGetMedicineByIdQuery,
 } = medicineApi;

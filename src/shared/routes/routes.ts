@@ -1,7 +1,7 @@
 export enum ERoute {
   medicines = '/',
   pointer = '/:letter',
-  medicine = '/medicine/:medicine',
+  medicine = '/medicine/:id',
   diseases = '/diseases',
   medkit = '/medkit',
   login = '/login',

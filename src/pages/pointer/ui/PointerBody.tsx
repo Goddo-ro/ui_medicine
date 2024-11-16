@@ -2,10 +2,12 @@ import { useGetMedicinePrefixesWordsQuery } from '@/entities/medicine';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import { IPointerParams } from '@/pages/pointer/ui/Pointer';
+
 import classes from './Pointer.module.scss';
 
 export const PointerBody = () => {
-  const { letter } = useParams();
+  const { letter } = useParams<IPointerParams>();
 
   const { data } = useGetMedicinePrefixesWordsQuery({ startsWith: letter });
 
@@ -21,11 +23,11 @@ export const PointerBody = () => {
           <div className={classes.words}>
             {words.map((word) => (
               <Link
-                to={'/medicine/' + word}
-                key={'word'}
+                to={`/medicine/${word.id}`}
+                key={word.id}
                 className={classes.medicineLink}
               >
-                {word}
+                {word.title}
               </Link>
             ))}
           </div>

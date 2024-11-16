@@ -1,8 +1,17 @@
+import { IDisease } from '@/entities/disease/@x/disease';
+
+interface IType {
+  readonly id: number;
+  readonly title: string;
+}
+
 export interface IMedicine {
   readonly id: number;
   readonly title: string;
   readonly type_id: number;
   readonly description: string;
+  readonly type: IType;
+  readonly diseases: IDisease[];
 }
 
 export interface IGetMedicineBody {
@@ -10,6 +19,11 @@ export interface IGetMedicineBody {
   readonly startsWith?: string;
 }
 
-export interface IPrefix {
-  readonly [key: string]: string[];
+export type IPrefix = Record<string, string[]>;
+
+interface IPrefixWord {
+  title: string;
+  id: number;
 }
+
+export type IPrefixWords = Record<string, IPrefixWord[]>;
