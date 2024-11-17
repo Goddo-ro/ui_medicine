@@ -1,25 +1,25 @@
-import { useGetMedicinePrefixesQuery } from '@/entities/medicine';
+import { useGetPrefixesQuery } from '@/entities/disease';
 import { generatePath } from 'react-router-dom';
 
 import { ERoute } from '@/shared/routes/routes';
 import { Prefixes } from '@/shared/ui/prefixes/Prefixes';
 
-import classes from './Medicine.module.scss';
+import classes from './Disease.module.scss';
 
-export const Medicines = () => {
-  const { data, isLoading } = useGetMedicinePrefixesQuery();
+export const Disease = () => {
+  const { data, isLoading } = useGetPrefixesQuery();
 
   return (
     <section className={classes.content}>
-      <h1 className={classes.title}>Алфавитный указатель лекарств</h1>
+      <h1 className={classes.title}>Алфавитный указатель заболеваний</h1>
       <Prefixes
         data={data}
         isLoading={isLoading}
         letterLinkGenerator={(letter) =>
-          generatePath(ERoute.medicinePointer, { letter })
+          generatePath(ERoute.diseasePointer, { letter })
         }
         prefixLinkGenerator={(letter, prefix) =>
-          generatePath(ERoute.medicinePointer, {
+          generatePath(ERoute.diseasePointer, {
             letter: `${letter}#${prefix}`,
           })
         }

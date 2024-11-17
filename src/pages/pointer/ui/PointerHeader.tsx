@@ -6,6 +6,8 @@ import { HashLink } from 'react-router-hash-link';
 
 import { IPointerParams } from '@/pages/pointer/ui/Pointer';
 
+import { ERoute, generatePath } from '@/shared/routes/routes';
+
 import classes from './Pointer.module.scss';
 
 // TODO: add skeletons
@@ -18,7 +20,7 @@ export const PointerHeader = () => {
   const letters = Object.keys(prefixes ?? {}).map((letter) => (
     <li key={letter}>
       <NavLink
-        to={`/${letter}`}
+        to={generatePath(ERoute.medicinePointer, { letter })}
         className={({ isActive }) =>
           clsx({ [classes.active]: isActive }, classes.singleLetters__letter)
         }

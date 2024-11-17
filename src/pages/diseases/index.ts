@@ -1,1 +1,1 @@
-export { Diseases } from './ui/diseases';
+export { Disease } from './ui/Disease';

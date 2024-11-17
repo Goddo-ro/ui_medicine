@@ -1,8 +1,10 @@
 export const ERoute = {
   medicines: '/',
-  medicinePointer: 'medicine/:letter',
+  medicinePointer: '/medicine/:letter',
   medicineInfo: '/medicine/info/:id',
-  diseases: '/diseases',
+  disease: '/disease',
+  diseasePointer: '/disease/:letter',
+  diseaseInfo: '/disease/info/:id',
   medkit: '/medkit',
   login: '/login',
   register: '/register',

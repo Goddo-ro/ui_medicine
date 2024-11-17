@@ -11,7 +11,7 @@ import { IPrefix } from '@/shared/ui/prefixes/Prefixes';
 const MEDICINE_BASE_URL = 'medicine';
 
 export const medicineApi = createApi({
-  reducerPath: 'medicine',
+  reducerPath: MEDICINE_BASE_URL,
   baseQuery: fetchBaseQuery({
     baseUrl: `${API_URL}/${MEDICINE_BASE_URL}`,
     credentials: 'include',

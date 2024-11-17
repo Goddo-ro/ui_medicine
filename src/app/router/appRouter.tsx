@@ -1,6 +1,6 @@
 import { Route, RouteProps, Routes } from 'react-router-dom';
 
-import { Diseases } from '@/pages/diseases';
+import { Disease } from '@/pages/diseases';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicine';
 import { MedicineInfo } from '@/pages/medicineInfo/MedicineInfo';
@@ -12,6 +12,7 @@ import { Root } from '@/pages/root';
 import { ERoute } from '@/shared/routes/routes';
 
 // TODO: add protected routes
+// TODO: add not found page
 
 const routesList: RouteProps[] = [
   {
@@ -23,8 +24,8 @@ const routesList: RouteProps[] = [
     element: <Pointer />,
   },
   {
-    path: ERoute.diseases,
-    element: <Diseases />,
+    path: ERoute.disease,
+    element: <Disease />,
   },
   {
     path: ERoute.medkit,
