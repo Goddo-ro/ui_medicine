@@ -1,8 +1,8 @@
 import { Skeleton } from '@mui/material';
 
-import classes from './MedicinePrefixesSkeleton.module.scss';
+import classes from './PrefixesSkeleton.module.scss';
 
-export const MedicinePrefixesSkeleton = () => {
+export const PrefixesSkeleton = () => {
   return (
     <div className={classes.skeleton}>
       <Skeleton />

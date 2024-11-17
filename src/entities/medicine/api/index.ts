@@ -1,12 +1,12 @@
 import {
   IGetMedicineBody,
   IMedicine,
-  IPrefix,
   IPrefixWords,
 } from '@/entities/medicine/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';
+import { IPrefix } from '@/shared/ui/prefixes/Prefixes';
 
 const MEDICINE_BASE_URL = 'medicine';
 

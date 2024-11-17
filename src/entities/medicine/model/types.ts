@@ -19,8 +19,6 @@ export interface IGetMedicineBody {
   readonly startsWith?: string;
 }
 
-export type IPrefix = Record<string, string[]>;
-
 interface IPrefixWord {
   title: string;
   id: number;

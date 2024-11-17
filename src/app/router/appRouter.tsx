@@ -19,7 +19,7 @@ const routesList: RouteProps[] = [
     element: <Medicines />,
   },
   {
-    path: ERoute.pointer,
+    path: ERoute.medicinePointer,
     element: <Pointer />,
   },
   {
@@ -39,7 +39,7 @@ const routesList: RouteProps[] = [
     element: <RegisterPage />,
   },
   {
-    path: ERoute.medicine,
+    path: ERoute.medicineInfo,
     element: <MedicineInfo />,
   },
 ];

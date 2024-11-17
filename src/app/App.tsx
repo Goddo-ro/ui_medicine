@@ -6,6 +6,7 @@ import { AppRouter } from '@/app/router';
 // TODO: rewrite files name
 // TODO: pages lazy loading
 // TODO: replace all skeletons with mui skeleton
+// TODO: firebase auth
 
 function App() {
   return (

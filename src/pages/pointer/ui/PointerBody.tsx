@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { IPointerParams } from '@/pages/pointer/ui/Pointer';
 
+import { ERoute, generatePath } from '@/shared/routes/routes';
+
 import classes from './Pointer.module.scss';
 
 export const PointerBody = () => {
@@ -23,7 +25,7 @@ export const PointerBody = () => {
           <div className={classes.words}>
             {words.map((word) => (
               <Link
-                to={`/medicine/${word.id}`}
+                to={generatePath(ERoute.medicineInfo, { id: word.id })}
                 key={word.id}
                 className={classes.medicineLink}
               >
