@@ -1,8 +1,5 @@
-import {
-  IGetMedicineBody,
-  IMedicine,
-  IPrefixWords,
-} from '@/entities/medicine/model/types';
+import { IGetMedicineBody, IMedicine } from '@/entities/medicine/model/types';
+import { IPrefixWords } from '@/widgets/pointer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';

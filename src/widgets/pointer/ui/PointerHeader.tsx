@@ -1,26 +1,28 @@
-import { useGetMedicinePrefixesQuery } from '@/entities/medicine';
+import { IPointerParams } from '@/widgets/pointer/model/types';
 import clsx from 'clsx';
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-import { IPointerParams } from '@/pages/pointer/ui/Pointer';
-
-import { ERoute, generatePath } from '@/shared/routes/routes';
+import { IPrefix } from '@/shared/ui/prefixes/Prefixes';
 
 import classes from './Pointer.module.scss';
 
-// TODO: add skeletons
+export interface IPointerHeaderProps {
+  prefixes?: IPrefix;
+  letterPathGenerator: (letter: string) => string;
+}
 
-export const PointerHeader = () => {
-  const { data: prefixes } = useGetMedicinePrefixesQuery();
-
+export const PointerHeader = ({
+  prefixes,
+  letterPathGenerator,
+}: IPointerHeaderProps) => {
   const { letter } = useParams<IPointerParams>();
 
   const letters = Object.keys(prefixes ?? {}).map((letter) => (
     <li key={letter}>
       <NavLink
-        to={generatePath(ERoute.medicinePointer, { letter })}
+        // to={generatePath(ERoute.medicinePointer, { letter })}
+        to={letterPathGenerator(letter)}
         className={({ isActive }) =>
           clsx({ [classes.active]: isActive }, classes.singleLetters__letter)
         }

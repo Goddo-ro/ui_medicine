@@ -1,11 +1,11 @@
 import { Route, RouteProps, Routes } from 'react-router-dom';
 
-import { Disease } from '@/pages/diseases';
+import { Disease } from '@/pages/disease';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicine';
 import { MedicineInfo } from '@/pages/medicineInfo/MedicineInfo';
+import { MedicinePointer } from '@/pages/medicinePointer';
 import { Medkit } from '@/pages/medkit';
-import { Pointer } from '@/pages/pointer';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
@@ -21,7 +21,7 @@ const routesList: RouteProps[] = [
   },
   {
     path: ERoute.medicinePointer,
-    element: <Pointer />,
+    element: <MedicinePointer />,
   },
   {
     path: ERoute.disease,

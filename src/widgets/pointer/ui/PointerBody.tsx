@@ -1,18 +1,14 @@
-import { useGetMedicinePrefixesWordsQuery } from '@/entities/medicine';
-import { useParams } from 'react-router-dom';
+import { IPrefixWord, IPrefixWords } from '@/widgets/pointer/model/types';
 import { Link } from 'react-router-dom';
-
-import { IPointerParams } from '@/pages/pointer/ui/Pointer';
-
-import { ERoute, generatePath } from '@/shared/routes/routes';
 
 import classes from './Pointer.module.scss';
 
-export const PointerBody = () => {
-  const { letter } = useParams<IPointerParams>();
+export interface IPointerBodyProps {
+  data?: IPrefixWords;
+  wordPathGenerator: (word: IPrefixWord) => string;
+}
 
-  const { data } = useGetMedicinePrefixesWordsQuery({ startsWith: letter });
-
+export const PointerBody = ({ data, wordPathGenerator }: IPointerBodyProps) => {
   return (
     <div className={classes.body}>
       {Object.entries(data ?? {}).map(([prefix, words]) => (
@@ -23,7 +19,8 @@ export const PointerBody = () => {
           <div className={classes.words}>
             {words.map((word) => (
               <Link
-                to={generatePath(ERoute.medicineInfo, { id: word.id })}
+                // to={generatePath(ERoute.medicineInfo, { id: word.id })}
+                to={wordPathGenerator(word)}
                 key={word.id}
                 className={classes.medicineLink}
               >

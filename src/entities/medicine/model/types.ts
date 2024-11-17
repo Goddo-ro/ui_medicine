@@ -18,10 +18,3 @@ export interface IGetMedicineBody {
   readonly search?: string;
   readonly startsWith?: string;
 }
-
-interface IPrefixWord {
-  title: string;
-  id: number;
-}
-
-export type IPrefixWords = Record<string, IPrefixWord[]>;
