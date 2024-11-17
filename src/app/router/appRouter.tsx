@@ -1,6 +1,7 @@
 import { Route, RouteProps, Routes } from 'react-router-dom';
 
 import { Disease } from '@/pages/disease';
+import { DiseaseInfo } from '@/pages/diseaseInfo';
 import { DiseasePointer } from '@/pages/diseasePointer';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicine';
@@ -31,6 +32,10 @@ const routesList: RouteProps[] = [
   {
     path: ERoute.diseasePointer,
     element: <DiseasePointer />,
+  },
+  {
+    path: ERoute.diseaseInfo,
+    element: <DiseaseInfo />,
   },
   {
     path: ERoute.medkit,

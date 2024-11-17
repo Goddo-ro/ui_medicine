@@ -1,4 +1,4 @@
-import { IGetDiseaseBody } from '@/entities/disease/model/types';
+import { IDisease, IGetDiseaseBody } from '@/entities/disease/model/types';
 import { IPrefixWords } from '@/widgets/pointer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -24,7 +24,14 @@ export const diseaseApi = createApi({
         params,
       }),
     }),
+    getById: builder.query<IDisease, number>({
+      query: (id) => `/${id}`,
+    }),
   }),
 });
 
-export const { useGetPrefixesQuery, useGetPrefixesWithWordsQuery } = diseaseApi;
+export const {
+  useGetPrefixesQuery,
+  useGetPrefixesWithWordsQuery,
+  useLazyGetByIdQuery,
+} = diseaseApi;

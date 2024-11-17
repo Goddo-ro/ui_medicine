@@ -1,4 +1,4 @@
-import { IDisease } from '@/entities/disease/@x/disease';
+import { IDisease } from '@/entities/disease/@x/medicine';
 
 interface IType {
   readonly id: number;
