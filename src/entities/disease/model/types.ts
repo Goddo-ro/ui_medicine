@@ -1,4 +1,8 @@
 export interface IDisease {
-  id: number;
-  title: string;
+  readonly id: number;
+  readonly title: string;
+}
+
+export interface IGetDiseaseBody {
+  readonly startsWith?: string;
 }

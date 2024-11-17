@@ -1,2 +1,2 @@
-export type { IDisease } from './model/types';
-export { useGetPrefixesQuery } from './api';
+export type { IDisease, IGetDiseaseBody } from './model/types';
+export { useGetPrefixesQuery, useGetPrefixesWithWordsQuery } from './api';

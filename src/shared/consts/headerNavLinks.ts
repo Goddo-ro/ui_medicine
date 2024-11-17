@@ -12,7 +12,7 @@ export const headerNavLinks: IHeaderNavLinkType[] = [
   },
   {
     title: 'Заболевания',
-    to: ERoute.diseases,
+    to: ERoute.disease,
   },
   {
     title: 'Аптечка',

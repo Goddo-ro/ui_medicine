@@ -1,3 +1,5 @@
+import { IGetDiseaseBody } from '@/entities/disease/model/types';
+import { IPrefixWords } from '@/widgets/pointer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';
@@ -15,7 +17,14 @@ export const diseaseApi = createApi({
     getPrefixes: builder.query<IPrefix, void>({
       query: () => `/prefixes`,
     }),
+    getPrefixesWithWords: builder.query<IPrefixWords, IGetDiseaseBody>({
+      query: (params) => ({
+        url: '/prefixes/words',
+        method: 'GET',
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useGetPrefixesQuery } = diseaseApi;
+export const { useGetPrefixesQuery, useGetPrefixesWithWordsQuery } = diseaseApi;

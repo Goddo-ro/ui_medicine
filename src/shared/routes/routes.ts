@@ -15,6 +15,8 @@ export type ERoute = (typeof ERoute)[keyof typeof ERoute];
 type RouteParams = {
   [ERoute.medicinePointer]: { letter: string };
   [ERoute.medicineInfo]: { id: number };
+  [ERoute.diseasePointer]: { letter: string };
+  [ERoute.diseaseInfo]: { id: number };
 };
 
 export function generatePath<T extends keyof RouteParams>(
