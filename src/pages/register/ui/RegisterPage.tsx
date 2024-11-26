@@ -6,7 +6,7 @@ import { registerData } from '@/pages/register/model/register.schema';
 
 import { IFieldError } from '@/shared/fieldError/fieldError';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
@@ -19,11 +19,11 @@ export const RegisterPage = () => {
   const isAuth = useAppSelector(selectAuth);
   const navigate = useNavigate();
 
-  if (isAuth) return <Navigate to={ERoute.medkit} replace />;
+  if (isAuth) return <Navigate to={paths.medkit} replace />;
 
   const handleRegister = (email: string, password: string) => {
     dispatch(registerThunk({ email, password })).then(() => {
-      navigate(ERoute.login);
+      navigate(paths.login);
     });
   };
 

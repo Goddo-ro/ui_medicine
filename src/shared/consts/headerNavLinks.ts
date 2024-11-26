@@ -1,21 +1,21 @@
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 
 export type IHeaderNavLinkType = {
   readonly title: string;
-  readonly to: ERoute;
+  readonly to: paths;
 };
 
 export const headerNavLinks: IHeaderNavLinkType[] = [
   {
     title: 'Лекарства',
-    to: ERoute.medicines,
+    to: paths.medicines,
   },
   {
     title: 'Заболевания',
-    to: ERoute.disease,
+    to: paths.disease,
   },
   {
     title: 'Аптечка',
-    to: ERoute.medkit,
+    to: paths.medkit,
   },
 ];

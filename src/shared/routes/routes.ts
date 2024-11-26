@@ -1,22 +1,22 @@
-export const ERoute = {
-  medicines: '/',
+// TODO: remove type prefix for all types
+
+export const paths = {
+  medicines: '/medicine',
   medicinePointer: '/medicine/:letter',
   medicineInfo: '/medicine/info/:id',
   disease: '/disease',
   diseasePointer: '/disease/:letter',
   diseaseInfo: '/disease/info/:id',
-  medkit: '/medkit',
+  medkit: '/',
   login: '/login',
   register: '/register',
 } as const;
 
-export type ERoute = (typeof ERoute)[keyof typeof ERoute];
-
 type RouteParams = {
-  [ERoute.medicinePointer]: { letter: string };
-  [ERoute.medicineInfo]: { id: number };
-  [ERoute.diseasePointer]: { letter: string };
-  [ERoute.diseaseInfo]: { id: number };
+  [paths.medicinePointer]: { letter: string };
+  [paths.medicineInfo]: { id: number };
+  [paths.diseasePointer]: { letter: string };
+  [paths.diseaseInfo]: { id: number };
 };
 
 export function generatePath<T extends keyof RouteParams>(

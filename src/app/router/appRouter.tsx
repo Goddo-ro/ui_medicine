@@ -1,70 +1,74 @@
-import { Route, RouteProps, Routes } from 'react-router-dom';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 
 import { Disease } from '@/pages/disease';
 import { DiseaseInfo } from '@/pages/diseaseInfo';
 import { DiseasePointer } from '@/pages/diseasePointer';
 import { LoginPage } from '@/pages/login';
 import { Medicines } from '@/pages/medicine';
-import { MedicineInfo } from '@/pages/medicineInfo/MedicineInfo';
+import { MedicineInfo } from '@/pages/medicineInfo';
 import { MedicinePointer } from '@/pages/medicinePointer';
 import { Medkit } from '@/pages/medkit';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 
-// TODO: add protected routes
+// TODO: add protected routes with loader logic
 // TODO: add not found page
 
-const routesList: RouteProps[] = [
-  {
-    path: ERoute.medicines,
-    element: <Medicines />,
-  },
-  {
-    path: ERoute.medicinePointer,
-    element: <MedicinePointer />,
-  },
-  {
-    path: ERoute.disease,
-    element: <Disease />,
-  },
-  {
-    path: ERoute.diseasePointer,
-    element: <DiseasePointer />,
-  },
-  {
-    path: ERoute.diseaseInfo,
-    element: <DiseaseInfo />,
-  },
-  {
-    path: ERoute.medkit,
-    element: <Medkit />,
-  },
-  {
-    path: ERoute.login,
-    element: <LoginPage />,
-  },
-  {
-    path: ERoute.register,
-    element: <RegisterPage />,
-  },
-  {
-    path: ERoute.medicineInfo,
-    element: <MedicineInfo />,
-  },
-];
-
 export const AppRouter = () => {
-  const routes = routesList.map((route, index) => (
-    <Route key={index} {...route} />
-  ));
-
   return (
-    <Routes>
-      <Route path='/' element={<Root />}>
-        {routes}
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
+};
+
+const Router = () => {
+  const routes = useRoutes([
+    {
+      path: '/',
+      element: <Root />,
+      children: [
+        {
+          path: paths.medicines,
+          element: <Medicines />,
+        },
+        {
+          path: paths.medicinePointer,
+          element: <MedicinePointer />,
+        },
+        {
+          path: paths.disease,
+          element: <Disease />,
+        },
+        {
+          path: paths.diseasePointer,
+          element: <DiseasePointer />,
+        },
+        {
+          path: paths.diseaseInfo,
+          element: <DiseaseInfo />,
+        },
+        {
+          path: paths.medkit,
+          element: <Medkit />,
+        },
+        {
+          path: paths.login,
+          element: <LoginPage />,
+        },
+        {
+          path: paths.register,
+          element: <RegisterPage />,
+        },
+        {
+          path: paths.medicineInfo,
+          element: <MedicineInfo />,
+        },
+      ],
+    },
+  ]);
+
+  return routes;
 };

@@ -14,7 +14,7 @@ import { columns } from '@/pages/medkit/model/consts';
 import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
 import { useAppSelector } from '@/shared/lib/store';
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 import { DataTable } from '@/shared/ui/table/DataTable';
 
 import { GridToolbar } from '@mui/x-data-grid';
@@ -82,7 +82,7 @@ export const Medkit = () => {
       });
   };
 
-  if (!isAuth) return <Navigate to={ERoute.login} replace />;
+  if (!isAuth) return <Navigate to={paths.login} replace />;
 
   return (
     <>

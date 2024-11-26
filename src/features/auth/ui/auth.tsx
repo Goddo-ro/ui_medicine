@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 
 import { Skeleton } from '@mui/material';
 
@@ -52,11 +52,11 @@ export const Auth = () => {
 const AuthButtons = () => {
   return (
     <>
-      <Link to={ERoute.login} className={classes.button}>
+      <Link to={paths.login} className={classes.button}>
         Логин
       </Link>
       <Link
-        to={ERoute.register}
+        to={paths.register}
         className={clsx(classes.button, classes.danger)}
       >
         Регистрация

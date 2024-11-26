@@ -1,0 +1,41 @@
+.homeItem {
+  display: flex;
+  align-items: center;
+  color: $black-color;
+  gap: 4px;
+
+  .homeIcon {
+    font-size: 1em;
+  }
+}
+
+.breadcrumbs {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+
+  :global(.MuiBreadcrumbs-li):first-child {
+    .item {
+      color: #404244;
+    }
+  }
+
+  :global(.MuiBreadcrumbs-li):last-child {
+    pointer-events: none;
+  }
+}
+
+.item {
+  font-size: 0.75em;
+  color: $black-color;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: $black-color;
+  }
+}

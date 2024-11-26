@@ -21,7 +21,7 @@ export const PointerHeader = ({
   const letters = Object.keys(prefixes ?? {}).map((letter) => (
     <li key={letter}>
       <NavLink
-        // to={generatePath(ERoute.medicinePointer, { letter })}
+        // to={generatePath(paths.medicinePointer, { letter })}
         to={letterPathGenerator(letter)}
         className={({ isActive }) =>
           clsx({ [classes.active]: isActive }, classes.singleLetters__letter)

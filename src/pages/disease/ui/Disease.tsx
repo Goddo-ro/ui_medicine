@@ -1,7 +1,7 @@
 import { useGetPrefixesQuery } from '@/entities/disease';
 import { generatePath } from 'react-router-dom';
 
-import { ERoute } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes/routes';
 import { Prefixes } from '@/shared/ui/prefixes/Prefixes';
 
 import classes from './Disease.module.scss';
@@ -16,10 +16,10 @@ export const Disease = () => {
         data={data}
         isLoading={isLoading}
         letterLinkGenerator={(letter) =>
-          generatePath(ERoute.diseasePointer, { letter })
+          generatePath(paths.diseasePointer, { letter })
         }
         prefixLinkGenerator={(letter, prefix) =>
-          generatePath(ERoute.diseasePointer, {
+          generatePath(paths.diseasePointer, {
             letter: `${letter}#${prefix}`,
           })
         }

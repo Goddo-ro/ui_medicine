@@ -19,7 +19,7 @@ export const PointerBody = ({ data, wordPathGenerator }: IPointerBodyProps) => {
           <div className={classes.words}>
             {words.map((word) => (
               <Link
-                // to={generatePath(ERoute.medicineInfo, { id: word.id })}
+                // to={generatePath(paths.medicineInfo, { id: word.id })}
                 to={wordPathGenerator(word)}
                 key={word.id}
                 className={classes.medicineLink}

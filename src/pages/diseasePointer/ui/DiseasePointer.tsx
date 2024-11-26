@@ -5,7 +5,7 @@ import {
 import { IPointerParams, IPrefixWord, Pointer } from '@/widgets/pointer';
 import { useParams } from 'react-router-dom';
 
-import { ERoute, generatePath } from '@/shared/routes/routes';
+import { generatePath, paths } from '@/shared/routes/routes';
 
 export const DiseasePointer = () => {
   const { letter } = useParams<IPointerParams>();
@@ -18,10 +18,10 @@ export const DiseasePointer = () => {
       data={data}
       prefixes={prefixes}
       letterPathGenerator={(letter: string) =>
-        generatePath(ERoute.diseasePointer, { letter })
+        generatePath(paths.diseasePointer, { letter })
       }
       wordPathGenerator={(word: IPrefixWord) =>
-        generatePath(ERoute.diseaseInfo, { id: word.id })
+        generatePath(paths.diseaseInfo, { id: word.id })
       }
     />
   );
