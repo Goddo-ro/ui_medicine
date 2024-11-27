@@ -6,7 +6,6 @@ import {
 } from '@/entities/viewer';
 import clsx from 'clsx';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';

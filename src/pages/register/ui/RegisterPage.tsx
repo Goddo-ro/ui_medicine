@@ -1,55 +1,26 @@
-import { registerThunk, selectAuth } from '@/entities/viewer';
-import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { selectAuth } from '@/entities/viewer';
+import { Navigate } from 'react-router-dom';
 
-import { registerData } from '@/pages/register/model/register.schema';
+import { useRegister } from '@/pages/register/model/useRegister';
 
-import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
+import { useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
-import { IFieldError } from '@/shared/types/fieldError';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
-import { errorParser } from '@/shared/zod/errorParser';
 
 export const RegisterPage = () => {
-  const [errors, setErrors] = useState<IFieldError[]>([]);
-
-  const dispatch = useAppDispatch();
   const isAuth = useAppSelector(selectAuth);
-  const navigate = useNavigate();
+
+  const { register, errors } = useRegister();
 
   if (isAuth) return <Navigate to={paths.medkit} replace />;
-
-  const handleRegister = (email: string, password: string) => {
-    dispatch(registerThunk({ email, password })).then(() => {
-      navigate(paths.login);
-    });
-  };
-
-  const validate = (formData: FormData) => {
-    const data = Object.fromEntries(formData.entries());
-    try {
-      const { email, password } = registerData.parse(data);
-      setErrors([]);
-      handleRegister(email, password);
-      console.debug('Successful parse');
-    } catch (error: unknown) {
-      errorParser(
-        error,
-        (errors) => setErrors(errors),
-        (error) => {
-          console.error('Unexpected validation error:', error);
-        },
-      );
-    }
-  };
 
   return (
     <Form
       onSubmit={(e) => {
         e.preventDefault();
-        validate(new FormData(e.currentTarget));
+        register(new FormData(e.currentTarget));
       }}
       title='Регистрация'
     >

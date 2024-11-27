@@ -8,6 +8,7 @@ import { CircularProgress } from '@mui/material';
 import classes from './DiseaseInfo.module.scss';
 
 // TODO: test not number param cases
+// TODO: replace medicine titles with links
 
 export const DiseaseInfo = () => {
   const { data, isLoading } = useDiseaseFetch();
