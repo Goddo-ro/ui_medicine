@@ -1,13 +1,13 @@
-import { IMedicine } from '@/entities/medicine/@x/disease';
-import { ISymptom } from '@/entities/symptom';
+import { Medicine } from '@/entities/medicine/@x/disease';
+import { Symptom } from '@/entities/symptom';
 
-export interface IDisease {
+export interface Disease {
   readonly id: number;
   readonly title: string;
-  readonly medicines: IMedicine[];
-  readonly symptoms: ISymptom[];
+  readonly medicines: Medicine[];
+  readonly symptoms: Symptom[];
 }
 
-export interface IGetDiseaseBody {
+export interface GetDiseaseBody {
   readonly startsWith?: string;
 }

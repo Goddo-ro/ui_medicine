@@ -4,13 +4,13 @@ import {
   logoutThunk,
   registerThunk,
 } from '@/entities/viewer/model/thunks';
-import { IAuthState } from '@/entities/viewer/model/types';
+import { AuthState } from '@/entities/viewer/model/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isAuth: false,
   isLoading: false,
-} satisfies IAuthState as IAuthState;
+} satisfies AuthState as AuthState;
 
 const authSlice = createSlice({
   name: 'auth',

@@ -1,1 +1,1 @@
-export type { ISymptom } from './model/types';
+export type { Symptom } from './model/types';

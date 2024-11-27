@@ -1,5 +1,5 @@
 import {
-  ITransaction,
+  Transaction,
   createTransaction,
   deleteTransaction,
   getTransactions,
@@ -26,7 +26,7 @@ import classes from './Medkit.module.scss';
 export const Medkit = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const isAuth = useAppSelector(selectAuth);
@@ -47,7 +47,7 @@ export const Medkit = () => {
     fetchTransactions();
   }, [fetchTransactions]);
 
-  const handleAdd = (transaction: ITransaction) => {
+  const handleAdd = (transaction: Transaction) => {
     createTransaction(transaction).then(() => {
       fetchTransactions();
     });
@@ -69,7 +69,7 @@ export const Medkit = () => {
       });
   };
 
-  const handleUpdate = (newTransaction: ITransaction) => {
+  const handleUpdate = (newTransaction: Transaction) => {
     const selectedId = selectedIds[0];
     if (selectedId === undefined) return;
     setIsLoading(true);

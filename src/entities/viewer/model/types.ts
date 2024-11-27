@@ -1,27 +1,27 @@
-import { IUser } from '@/shared/types/user';
+import { User } from '@/shared/types/user';
 
-export interface IAuthState {
+export interface AuthState {
   readonly isAuth: boolean;
   readonly isLoading: boolean;
 }
 
-export interface IIsLoggedIn {
+export interface IsLoggedIn {
   readonly message: string;
   readonly uid: string;
 }
 
-export interface ILogin {
+export interface Login {
   readonly message: string;
   readonly userCredential: {
-    user: IUser;
+    user: User;
   };
 }
 
-export interface IRegister {
+export interface Register {
   readonly message: string;
 }
 
-export interface IAuthData {
+export interface AuthData {
   readonly email: string;
   readonly password: string;
 }

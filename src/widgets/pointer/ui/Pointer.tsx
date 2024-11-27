@@ -1,15 +1,15 @@
 import {
-  IPointerBodyProps,
   PointerBody,
+  PointerBodyProps,
 } from '@/widgets/pointer/ui/PointerBody';
 import {
-  IPointerHeaderProps,
   PointerHeader,
+  PointerHeaderProps,
 } from '@/widgets/pointer/ui/PointerHeader';
 
 import classes from './Pointer.module.scss';
 
-type TPointerProps = IPointerHeaderProps & IPointerBodyProps;
+type TPointerProps = PointerHeaderProps & PointerBodyProps;
 
 // TODO: add skeletons
 

@@ -1,5 +1,5 @@
-import { IMedicine } from '@/entities/medicine';
-import { ITransaction } from '@/entities/transaction';
+import { Medicine } from '@/entities/medicine';
+import { Transaction } from '@/entities/transaction';
 import { FormEvent, useEffect, useState } from 'react';
 
 import { getMedicine } from '@/shared/api/medicine';
@@ -11,10 +11,10 @@ import { DateTimePicker } from '@mui/x-date-pickers';
 import classes from './Medkit.module.scss';
 
 type MedkitAddDialogProps = Omit<ModalProps, 'children'> & {
-  onAdd: (transaction: ITransaction) => void;
+  onAdd: (transaction: Transaction) => void;
   close: () => void;
-  onUpdate?: (transaction: ITransaction) => void;
-  transaction?: ITransaction;
+  onUpdate?: (transaction: Transaction) => void;
+  transaction?: Transaction;
 };
 
 export const MedkitAddDialog = ({
@@ -26,8 +26,8 @@ export const MedkitAddDialog = ({
 }: MedkitAddDialogProps) => {
   // TODO: add RTK Query
   // TODO: fix datepickers overflowing
-  const [medicines, setMedicines] = useState<IMedicine[]>([]);
-  const [medicine, setMedicine] = useState<IMedicine | null>(
+  const [medicines, setMedicines] = useState<Medicine[]>([]);
+  const [medicine, setMedicine] = useState<Medicine | null>(
     transaction?.medicine || null,
   );
   const [purchaseDate, setPurchaseDate] = useState<Date | null>(
@@ -53,7 +53,7 @@ export const MedkitAddDialog = ({
     setCount(transaction?.count || 1);
   }, [transaction]);
 
-  const formTransaction = (): ITransaction | null => {
+  const formTransaction = (): Transaction | null => {
     if (!medicine || !purchaseDate || !expirationDate) return null;
     return {
       medicine_id: medicine?.id,
@@ -85,7 +85,7 @@ export const MedkitAddDialog = ({
         </h2>
         <Autocomplete
           value={medicine}
-          onChange={(_, newValue: IMedicine | null) => {
+          onChange={(_, newValue: Medicine | null) => {
             setMedicine(newValue);
           }}
           options={medicines}

@@ -1,14 +1,14 @@
-import { IPrefixWord, IPrefixWords } from '@/widgets/pointer/model/types';
+import { PrefixWord, PrefixWords } from '@/widgets/pointer/model/types';
 import { Link } from 'react-router-dom';
 
 import classes from './Pointer.module.scss';
 
-export interface IPointerBodyProps {
-  data?: IPrefixWords;
-  wordPathGenerator: (word: IPrefixWord) => string;
+export interface PointerBodyProps {
+  data?: PrefixWords;
+  wordPathGenerator: (word: PrefixWord) => string;
 }
 
-export const PointerBody = ({ data, wordPathGenerator }: IPointerBodyProps) => {
+export const PointerBody = ({ data, wordPathGenerator }: PointerBodyProps) => {
   return (
     <div className={classes.body}>
       {Object.entries(data ?? {}).map(([prefix, words]) => (

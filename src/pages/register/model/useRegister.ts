@@ -6,10 +6,10 @@ import { registerData } from '@/pages/register/model/register-schema';
 
 import { useAppDispatch } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
-import { IFieldError, errorParser } from '@/shared/zod/errorParser';
+import { FieldError, errorParser } from '@/shared/zod/errorParser';
 
 export const useRegister = () => {
-  const [errors, setErrors] = useState<IFieldError[]>([]);
+  const [errors, setErrors] = useState<FieldError[]>([]);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

@@ -4,10 +4,10 @@ import { PrefixesSkeleton } from '@/shared/ui/prefixes/PrefixesSkeleton';
 
 import classes from './Prefixes.module.scss';
 
-export type IPrefix = Record<string, string[]>;
+export type Prefix = Record<string, string[]>;
 
-interface IPrefixesProps {
-  data?: IPrefix;
+interface PrefixesProps {
+  data?: Prefix;
   isLoading: boolean;
   letterLinkGenerator: (letter: string) => string;
   prefixLinkGenerator: (letter: string, prefix: string) => string;
@@ -20,7 +20,7 @@ export const Prefixes = ({
   isLoading,
   letterLinkGenerator,
   prefixLinkGenerator,
-}: IPrefixesProps) => {
+}: PrefixesProps) => {
   const singleLetters = Object.keys(data ?? {});
 
   return (

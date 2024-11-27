@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { loginData } from '@/pages/login/model/login-schema';
 
 import { useAppDispatch } from '@/shared/lib/store';
-import { IFieldError, errorParser } from '@/shared/zod/errorParser';
+import { FieldError, errorParser } from '@/shared/zod/errorParser';
 
 export const useLogin = () => {
-  const [errors, setErrors] = useState<IFieldError[]>([]);
+  const [errors, setErrors] = useState<FieldError[]>([]);
 
   const dispatch = useAppDispatch();
 

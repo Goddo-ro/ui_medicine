@@ -2,12 +2,12 @@ import { useLazyGetByIdQuery } from '@/entities/disease';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-type IParams = {
+type Params = {
   id: string;
 };
 
 export const useDiseaseFetch = () => {
-  const { id } = useParams<IParams>();
+  const { id } = useParams<Params>();
 
   const [trigger, result] = useLazyGetByIdQuery();
 

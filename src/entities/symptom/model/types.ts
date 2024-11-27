@@ -1,4 +1,4 @@
-export interface ISymptom {
+export interface Symptom {
   id: number;
   title: string;
 }

@@ -1,4 +1,4 @@
-export type { ITransaction } from './model/types';
+export type { Transaction } from './model/types';
 export {
   getTransactions,
   createTransaction,

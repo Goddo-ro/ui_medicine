@@ -1,9 +1,9 @@
-import { IGetMedicineBody, IMedicine } from '@/entities/medicine/model/types';
-import { IPrefixWords } from '@/widgets/pointer';
+import { GetMedicineBody, Medicine } from '@/entities/medicine/model/types';
+import { PrefixWords } from '@/widgets/pointer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';
-import { IPrefix } from '@/shared/ui/prefixes/Prefixes';
+import { Prefix } from '@/shared/ui/prefixes/Prefixes';
 
 const MEDICINE_BASE_URL = 'medicine';
 
@@ -14,19 +14,19 @@ export const medicineApi = createApi({
     credentials: 'include',
   }),
   endpoints: (builder) => ({
-    getMedicine: builder.query<IMedicine[], IGetMedicineBody>({
+    getMedicine: builder.query<Medicine[], GetMedicineBody>({
       query: (body) => ({
         url: '/',
         method: 'GET',
         params: body,
       }),
     }),
-    getMedicinePrefixes: builder.query<IPrefix, void>({
+    getMedicinePrefixes: builder.query<Prefix, void>({
       query: () => `/prefixes`,
     }),
     getMedicinePrefixesWords: builder.query<
-      IPrefixWords,
-      Omit<IGetMedicineBody, 'search'>
+      PrefixWords,
+      Omit<GetMedicineBody, 'search'>
     >({
       query: (params) => ({
         url: '/prefixes/words',
@@ -34,10 +34,10 @@ export const medicineApi = createApi({
         params,
       }),
     }),
-    getMedicineById: builder.query<IMedicine, number>({
+    getMedicineById: builder.query<Medicine, number>({
       query: (medicine_id) => `/${medicine_id}`,
     }),
-    getMedicineByTitle: builder.query<IMedicine, string>({
+    getMedicineByTitle: builder.query<Medicine, string>({
       query: (title) => ({
         url: `/title`,
         method: 'GET',
