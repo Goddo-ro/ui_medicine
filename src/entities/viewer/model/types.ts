@@ -1,4 +1,4 @@
-import { IUser } from '@/shared/user/user';
+import { IUser } from '@/shared/types/user';
 
 export interface IAuthState {
   readonly isAuth: boolean;

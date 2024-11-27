@@ -20,7 +20,7 @@ export const useHistoryPaths = (
     },
     {
       displayName: medicineTitle,
-      path: paths.medicinePointer,
+      path: paths.diseaseInfo,
     },
   ];
 

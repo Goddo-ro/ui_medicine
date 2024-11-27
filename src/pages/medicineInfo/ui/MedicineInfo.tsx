@@ -16,7 +16,7 @@ export const MedicineInfo = () => {
 
   return (
     <>
-      <PathHistory paths={historyPaths} className={classes.history} />
+      <PathHistory paths={historyPaths} />
       <div className={classes.content}>
         {isLoading ? (
           <CircularProgress className={classes.loader} />

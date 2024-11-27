@@ -1,6 +1,9 @@
 import { ZodError } from 'zod';
 
-import { IFieldError } from '@/shared/fieldError/fieldError';
+export interface IFieldError {
+  readonly message: string;
+  readonly fieldName: string;
+}
 
 export const errorParser = (
   error: unknown,

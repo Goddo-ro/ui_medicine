@@ -4,9 +4,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 import { registerData } from '@/pages/register/model/register.schema';
 
-import { IFieldError } from '@/shared/fieldError/fieldError';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
+import { IFieldError } from '@/shared/types/fieldError';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';

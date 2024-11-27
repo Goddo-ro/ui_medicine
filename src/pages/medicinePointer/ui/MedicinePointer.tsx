@@ -10,8 +10,6 @@ import { useHistoryPaths } from '@/pages/medicinePointer/model/useHistoryPaths';
 
 import { generatePath, paths } from '@/shared/routes/routes';
 
-import classes from './MedicinePointer.module.scss';
-
 export const MedicinePointer = () => {
   const { letter } = useParams<IPointerParams>();
 
@@ -22,7 +20,7 @@ export const MedicinePointer = () => {
 
   return (
     <>
-      <PathHistory paths={historyPaths} className={classes.history} />
+      <PathHistory paths={historyPaths} />
       <Pointer
         data={data}
         prefixes={prefixes}

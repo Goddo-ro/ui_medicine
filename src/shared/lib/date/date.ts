@@ -1,3 +1,5 @@
+// TODO: add tests
+
 export function formatDate(input: string): string {
   const date = new Date(input);
 
