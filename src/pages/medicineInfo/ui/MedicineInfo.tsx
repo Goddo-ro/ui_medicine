@@ -1,14 +1,16 @@
 import { PathHistory } from '@/widgets/pathHistory';
+import { Link } from 'react-router-dom';
 
 import { useHistoryPaths } from '@/pages/medicineInfo/model/useHistoryPaths';
 import { useMedicineFetch } from '@/pages/medicineInfo/model/useMedicineFetch';
+
+import { generatePath, paths } from '@/shared/routes/routes';
 
 import { CircularProgress } from '@mui/material';
 
 import classes from './MedicineInfo.module.scss';
 
 // TODO: order button
-// TODO: replace diseases title with links
 
 export const MedicineInfo = () => {
   const { data, isLoading } = useMedicineFetch();
@@ -41,7 +43,13 @@ export const MedicineInfo = () => {
               ) : (
                 <ul className={classes.reasons}>
                   {data.diseases.map((disease) => (
-                    <li key={disease.id}>{disease.title}</li>
+                    <li key={disease.id}>
+                      <Link
+                        to={generatePath(paths.diseaseInfo, { id: disease.id })}
+                      >
+                        {disease.title}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               )}
