@@ -7,6 +7,7 @@ import {
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
@@ -52,15 +53,22 @@ export const Auth = () => {
 const AuthButtons = () => {
   return (
     <>
-      <Link to={paths.login} className={classes.button}>
+      <NavLink
+        className={({ isActive }) =>
+          clsx({ [classes.active]: isActive }, classes.button)
+        }
+        to={paths.login}
+      >
         Логин
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         to={paths.register}
-        className={clsx(classes.button, classes.danger)}
+        className={({ isActive }) =>
+          clsx(classes.button, classes.danger, { [classes.active]: isActive })
+        }
       >
         Регистрация
-      </Link>
+      </NavLink>
     </>
   );
 };

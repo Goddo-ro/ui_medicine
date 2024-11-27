@@ -6,11 +6,10 @@ import { loginData } from '@/pages/login/model/login-schema';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
-import { IFieldError } from '@/shared/types/fieldError';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
-import { errorParser } from '@/shared/zod/errorParser';
+import { IFieldError, errorParser } from '@/shared/zod/errorParser';
 
 export const LoginPage = () => {
   const [errors, setErrors] = useState<IFieldError[]>([]);
