@@ -40,6 +40,7 @@ export const LoginPage = () => {
         type='password'
         id='password'
         name='password'
+        autoComplete='on'
         error={errors.find((error) => error.fieldName === 'password')?.message}
         required
       />

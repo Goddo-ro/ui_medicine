@@ -3,6 +3,8 @@ import { Transaction } from '@/entities/transaction';
 import { apiInstance } from '@/shared/api/client';
 import { TRANSACTION_BASE_URL } from '@/shared/consts/baseURLs';
 
+//TODO: replace with rtk query
+
 export const getTransactions = () => {
   return apiInstance.get<Transaction[]>(`${TRANSACTION_BASE_URL}/`);
 };

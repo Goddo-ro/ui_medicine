@@ -1,16 +1,11 @@
-import {
-  Transaction,
-  createTransaction,
-  deleteTransaction,
-  getTransactions,
-  updateTransaction,
-} from '@/entities/transaction';
+import { Transaction } from '@/entities/transaction';
 import { selectAuth } from '@/entities/viewer';
 import clsx from 'clsx';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { columns } from '@/pages/medkit/model/consts';
+import { useTableFetcher } from '@/pages/medkit/model/useTableFetcher';
 import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
 import { useAppSelector } from '@/shared/lib/store';
@@ -23,65 +18,24 @@ import classes from './Medkit.module.scss';
 
 // TODO: create UI component for errors
 
+export type SelectedIds = number[];
+
 export const Medkit = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [selectedIds, setSelectedIds] = useState<SelectedIds>([]);
 
-  const isAuth = useAppSelector(selectAuth);
+  const clearSelected = useCallback(() => {
+    setSelectedIds([]);
+  }, [setSelectedIds]);
 
-  const fetchTransactions = useCallback(() => {
-    if (!isAuth) return;
-    setIsLoading(true);
-    getTransactions()
-      .then((res) => {
-        setTransactions(res.data);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const { isLoading, transactions, handleAdd, handleDelete, handleUpdate } =
+    useTableFetcher(clearSelected);
+
+  const close = useCallback(() => {
+    setIsAddDialogOpen(false);
   }, []);
 
-  useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
-
-  const handleAdd = (transaction: Transaction) => {
-    createTransaction(transaction).then(() => {
-      fetchTransactions();
-    });
-  };
-
-  // TODO: search by medicine title
-
-  const handleDelete = () => {
-    setIsLoading(true);
-    const deletingPromises = selectedIds.map((id) => {
-      deleteTransaction(id);
-    });
-    Promise.all(deletingPromises)
-      .then(() => {
-        fetchTransactions();
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const handleUpdate = (newTransaction: Transaction) => {
-    const selectedId = selectedIds[0];
-    if (selectedId === undefined) return;
-    setIsLoading(true);
-    updateTransaction(selectedId, newTransaction)
-      .then(() => {
-        fetchTransactions();
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
+  const isAuth = useAppSelector(selectAuth);
   if (!isAuth) return <Navigate to={paths.login} replace />;
 
   return (
@@ -89,13 +43,11 @@ export const Medkit = () => {
       <MedkitAddDialog
         onAdd={handleAdd}
         open={isAddDialogOpen}
-        close={() => {
-          setIsAddDialogOpen(false);
+        close={close}
+        onClose={close}
+        onUpdate={(transaction: Transaction) => {
+          handleUpdate(transaction, selectedIds[0]);
         }}
-        onClose={() => {
-          setIsAddDialogOpen(false);
-        }}
-        onUpdate={handleUpdate}
         transaction={
           selectedIds?.length === 1
             ? transactions.find(
@@ -118,7 +70,9 @@ export const Medkit = () => {
               setIsAddDialogOpen(true);
             },
             disableEdit: selectedIds.length !== 1,
-            onDelete: handleDelete,
+            onDelete: () => {
+              handleDelete(selectedIds);
+            },
             disableDelete: !selectedIds.length,
           }}
           initialState={{
@@ -129,6 +83,7 @@ export const Medkit = () => {
             },
           }}
           checkboxSelection
+          rowSelectionModel={selectedIds}
           onRowSelectionModelChange={(ids) => {
             setSelectedIds(ids.map((id) => Number.parseInt(id.toString())));
           }}

@@ -31,7 +31,7 @@ export const columns: GridColDef<Transaction>[] = [
       return <b>{params.row.medicine?.title || 'Нет названия'}</b>;
     },
     valueGetter: (medicine: Medicine) => {
-      return <b>{medicine.title}</b>;
+      return medicine.title;
     },
     sortComparator: (m1: Medicine, m2: Medicine) =>
       m1.title.localeCompare(m2.title),
