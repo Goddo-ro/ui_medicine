@@ -10,6 +10,7 @@ import classes from './Pointer.module.scss';
 export interface PointerHeaderProps {
   prefixes?: Prefix;
   letterPathGenerator: (letter: string) => string;
+  isLoading?: boolean;
 }
 
 export const PointerHeader = ({

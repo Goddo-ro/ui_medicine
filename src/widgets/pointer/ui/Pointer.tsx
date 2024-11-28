@@ -11,7 +11,7 @@ import classes from './Pointer.module.scss';
 
 type TPointerProps = PointerHeaderProps & PointerBodyProps;
 
-// TODO: add skeletons
+// TODO: HIGH add skeletons
 
 export const Pointer = (props: TPointerProps) => {
   return (

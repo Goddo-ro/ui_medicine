@@ -10,7 +10,7 @@ import { CircularProgress } from '@mui/material';
 
 import classes from './MedicineInfo.module.scss';
 
-// TODO: order button
+// TODO: HIGH order button
 
 export const MedicineInfo = () => {
   const { data, isLoading } = useMedicineFetch();

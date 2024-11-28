@@ -8,13 +8,13 @@ import { Medicines } from '@/pages/medicine';
 import { MedicineInfo } from '@/pages/medicineInfo';
 import { MedicinePointer } from '@/pages/medicinePointer';
 import { Medkit } from '@/pages/medkit';
+import { NotFound } from '@/pages/notFound';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
 import { paths } from '@/shared/routes/routes';
 
-// TODO: add protected routes with loader logic
-// TODO: add not found page
+// TODO: HIGH add protected routes with loader logic
 
 export const AppRouter = () => {
   return (
@@ -67,6 +67,10 @@ const Router = () => {
           element: <MedicineInfo />,
         },
       ],
+    },
+    {
+      path: '*',
+      element: <NotFound />,
     },
   ]);
 

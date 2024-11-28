@@ -6,6 +6,7 @@ import classes from './Pointer.module.scss';
 export interface PointerBodyProps {
   data?: PrefixWords;
   wordPathGenerator: (word: PrefixWord) => string;
+  isLoading?: boolean;
 }
 
 export const PointerBody = ({ data, wordPathGenerator }: PointerBodyProps) => {
@@ -19,7 +20,6 @@ export const PointerBody = ({ data, wordPathGenerator }: PointerBodyProps) => {
           <div className={classes.words}>
             {words.map((word) => (
               <Link
-                // to={generatePath(paths.medicineInfo, { id: word.id })}
                 to={wordPathGenerator(word)}
                 key={word.id}
                 className={classes.medicineLink}
