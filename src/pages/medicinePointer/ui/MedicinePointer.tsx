@@ -13,7 +13,7 @@ import { generatePath, paths } from '@/shared/routes/routes';
 export const MedicinePointer = () => {
   const { letter } = useParams<PointerParams>();
 
-  const { data: prefixes } = useGetMedicinePrefixesQuery();
+  const { data: prefixes, isFetching } = useGetMedicinePrefixesQuery();
   const { data } = useGetMedicinePrefixesWordsQuery({ startsWith: letter });
 
   const historyPaths = useHistoryPaths(letter ?? '');
@@ -24,6 +24,7 @@ export const MedicinePointer = () => {
       <Pointer
         data={data}
         prefixes={prefixes}
+        isLoading={isFetching}
         letterPathGenerator={(letter: string) =>
           generatePath(paths.medicinePointer, { letter })
         }

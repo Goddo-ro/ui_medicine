@@ -6,7 +6,6 @@ import classes from './Pointer.module.scss';
 export interface PointerBodyProps {
   data?: PrefixWords;
   wordPathGenerator: (word: PrefixWord) => string;
-  isLoading?: boolean;
 }
 
 export const PointerBody = ({ data, wordPathGenerator }: PointerBodyProps) => {
