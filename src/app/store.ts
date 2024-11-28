@@ -1,5 +1,6 @@
 import { diseaseApi } from '@/entities/disease/api';
 import { medicineApi } from '@/entities/medicine/api';
+import { transactionApi } from '@/entities/transaction/api';
 import { AuthReducer } from '@/entities/viewer';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -7,12 +8,14 @@ export const store = configureStore({
   reducer: {
     [medicineApi.reducerPath]: medicineApi.reducer,
     [diseaseApi.reducerPath]: diseaseApi.reducer,
+    [transactionApi.reducerPath]: transactionApi.reducer,
     auth: AuthReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
       medicineApi.middleware,
       diseaseApi.middleware,
+      transactionApi.middleware,
     ]),
 });
 

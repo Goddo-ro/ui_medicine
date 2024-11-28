@@ -10,7 +10,7 @@ import { CircularProgress } from '@mui/material';
 
 import classes from './DiseaseInfo.module.scss';
 
-// TODO: test not number param cases
+// TODO: add error message for bad request
 
 export const DiseaseInfo = () => {
   const { data, isLoading } = useDiseaseFetch();

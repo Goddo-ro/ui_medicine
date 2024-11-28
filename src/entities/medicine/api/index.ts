@@ -3,9 +3,8 @@ import { PrefixWords } from '@/widgets/pointer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';
+import { MEDICINE_BASE_URL } from '@/shared/consts/baseURLs';
 import { Prefix } from '@/shared/ui/prefixes/Prefixes';
-
-const MEDICINE_BASE_URL = 'medicine';
 
 export const medicineApi = createApi({
   reducerPath: MEDICINE_BASE_URL,

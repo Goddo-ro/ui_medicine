@@ -1,20 +1,22 @@
-import { Transaction, getTransactions } from '@/entities/transaction';
-import { useCallback, useEffect, useState } from 'react';
+import { Transaction, useGetTransactionsQuery } from '@/entities/transaction';
+import { useCallback } from 'react';
 
 import { useToolbarButtons } from '@/pages/medkit/model/useToolbarButtons';
 import { SelectedIds } from '@/pages/medkit/ui/Medkit';
 
 export const useTableFetcher = (clearSelected: () => void) => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    data: transactions,
+    isFetching: transactionsLoading,
+    refetch,
+  } = useGetTransactionsQuery();
 
-  const { addAction, deleteAction, updateAction } = useToolbarButtons();
+  const { isLoading, addAction, deleteAction, updateAction } =
+    useToolbarButtons();
 
   const handleAdd = useCallback((transaction: Transaction) => {
-    setIsLoading(true);
     addAction(transaction).finally(() => {
-      setIsLoading(false);
-      fetchTransactions();
+      refetch();
     });
   }, []);
 
@@ -22,11 +24,9 @@ export const useTableFetcher = (clearSelected: () => void) => {
     (newTransaction: Transaction, updatingId: number) => {
       const updateState = updateAction(newTransaction, updatingId);
       if (updateState) {
-        setIsLoading(true);
         updateState.finally(() => {
-          setIsLoading(false);
           clearSelected();
-          fetchTransactions();
+          refetch();
         });
       }
     },
@@ -34,28 +34,17 @@ export const useTableFetcher = (clearSelected: () => void) => {
   );
 
   const handleDelete = useCallback((selectedIds: SelectedIds) => {
-    setIsLoading(true);
     deleteAction(selectedIds).finally(() => {
-      setIsLoading(false);
       clearSelected();
-      fetchTransactions();
+      refetch();
     });
   }, []);
 
-  const fetchTransactions = useCallback(() => {
-    setIsLoading(true);
-    getTransactions()
-      .then((res) => {
-        setTransactions(res.data);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
-
-  return { transactions, isLoading, handleAdd, handleUpdate, handleDelete };
+  return {
+    transactions,
+    isLoading: isLoading || transactionsLoading,
+    handleAdd,
+    handleUpdate,
+    handleDelete,
+  };
 };

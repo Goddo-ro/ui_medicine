@@ -50,7 +50,7 @@ export const Medkit = () => {
         }}
         transaction={
           selectedIds?.length === 1
-            ? transactions.find(
+            ? transactions?.find(
                 (transaction) => transaction.id === selectedIds[0],
               )
             : undefined

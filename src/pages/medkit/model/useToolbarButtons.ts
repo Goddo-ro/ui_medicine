@@ -1,32 +1,46 @@
 import {
   Transaction,
-  createTransaction,
-  deleteTransaction,
-  updateTransaction,
+  useCreateTransactionMutation,
+  useDeleteTransactionMutation,
+  useUpdateTransactionMutation,
 } from '@/entities/transaction';
 import { useCallback } from 'react';
 
 import { SelectedIds } from '@/pages/medkit/ui/Medkit';
 
 export const useToolbarButtons = () => {
-  const addAction = useCallback((transaction: Transaction) => {
-    return createTransaction(transaction);
+  const [deleteTransaction, { isLoading: isDeleting }] =
+    useDeleteTransactionMutation();
+  const [createTransaction, { isLoading: isCreating }] =
+    useCreateTransactionMutation();
+  const [updateTransaction, { isLoading: isUpdating }] =
+    useUpdateTransactionMutation();
+
+  const addAction = useCallback(async (transaction: Transaction) => {
+    return await createTransaction(transaction).unwrap();
   }, []);
 
   const deleteAction = useCallback(async (selectedIds: SelectedIds) => {
     const deletingPromises = selectedIds.map((id) => {
-      deleteTransaction(id);
+      deleteTransaction(id).unwrap();
     });
     return await Promise.all(deletingPromises);
   }, []);
 
   const updateAction = useCallback(
-    (newTransaction: Transaction, updatingId: number) => {
-      if (updatingId === undefined) return;
-      return updateTransaction(updatingId, newTransaction);
+    async (newTransaction: Transaction, updatingId: number) => {
+      return await updateTransaction({
+        transactionId: updatingId,
+        transaction: newTransaction,
+      }).unwrap();
     },
     [],
   );
 
-  return { addAction, deleteAction, updateAction };
+  return {
+    isLoading: isDeleting || isCreating || isUpdating,
+    addAction,
+    deleteAction,
+    updateAction,
+  };
 };
