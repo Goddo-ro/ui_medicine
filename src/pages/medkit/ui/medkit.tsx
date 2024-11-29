@@ -1,15 +1,11 @@
 import { Transaction } from '@/entities/transaction';
-import { selectAuth } from '@/entities/viewer';
 import clsx from 'clsx';
 import { useCallback, useState } from 'react';
-import { Navigate } from 'react-router-dom';
 
 import { columns } from '@/pages/medkit/model/consts';
 import { useTableFetcher } from '@/pages/medkit/model/useTableFetcher';
 import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
-import { useAppSelector } from '@/shared/lib/store';
-import { paths } from '@/shared/routes/routes';
 import { DataTable } from '@/shared/ui/table/DataTable';
 
 import { GridToolbar } from '@mui/x-data-grid';
@@ -34,9 +30,6 @@ export const Medkit = () => {
   const close = useCallback(() => {
     setIsAddDialogOpen(false);
   }, []);
-
-  const isAuth = useAppSelector(selectAuth);
-  if (!isAuth) return <Navigate to={paths.login} replace />;
 
   return (
     <>

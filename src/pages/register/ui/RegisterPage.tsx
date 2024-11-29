@@ -1,20 +1,11 @@
-import { selectAuth } from '@/entities/viewer';
-import { Navigate } from 'react-router-dom';
-
 import { useRegister } from '@/pages/register/model/useRegister';
 
-import { useAppSelector } from '@/shared/lib/store';
-import { paths } from '@/shared/routes/routes';
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
 
 export const RegisterPage = () => {
-  const isAuth = useAppSelector(selectAuth);
-
   const { register, errors } = useRegister();
-
-  if (isAuth) return <Navigate to={paths.medkit} replace />;
 
   return (
     <Form
