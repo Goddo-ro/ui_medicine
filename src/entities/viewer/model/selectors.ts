@@ -5,7 +5,7 @@ import type { RootState } from '@/shared/lib/store';
 
 const selectBase = createSelector(
   (state: RootState) => state,
-  (state) => state.auth,
+  (state) => state.authReducer,
 );
 
 export const selectAuth = createSelector(

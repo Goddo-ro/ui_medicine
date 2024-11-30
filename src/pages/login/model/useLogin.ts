@@ -1,8 +1,10 @@
-import { loginThunk } from '@/entities/viewer';
+import { login as loginAction } from '@/entities/viewer';
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useState } from 'react';
 
 import { loginData } from '@/pages/login/model/login-schema';
 
+import { auth, googleProvider } from '@/shared/api/firebase';
 import { useAppDispatch } from '@/shared/lib/store';
 import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
 
@@ -11,11 +13,14 @@ export const useLogin = () => {
 
   const dispatch = useAppDispatch();
 
-  const login = (formData: FormData) => {
+  // TODO: HIGH add error handler
+
+  const login = async (formData: FormData) => {
     try {
       const { email, password } = validate(formData);
-      dispatch(loginThunk({ email, password }));
-    } catch (error: unknown) {
+      await signInWithEmailAndPassword(auth, email, password);
+      dispatch(loginAction());
+    } catch (error) {
       errorParser(
         error,
         (errors) => setErrors(errors),
@@ -26,7 +31,22 @@ export const useLogin = () => {
     }
   };
 
-  return { login, errors };
+  const loginWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      dispatch(loginAction());
+    } catch (error) {
+      errorParser(
+        error,
+        (errors) => setErrors(errors),
+        (error) => {
+          console.error('Unexpected validation error:', error);
+        },
+      );
+    }
+  };
+
+  return { login, loginWithGoogle, errors };
 };
 
 const validate = (formData: FormData) => {

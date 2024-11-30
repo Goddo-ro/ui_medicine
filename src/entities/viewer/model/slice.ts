@@ -1,9 +1,4 @@
-import {
-  checkAuth,
-  loginThunk,
-  logoutThunk,
-  registerThunk,
-} from '@/entities/viewer/model/thunks';
+import { authApi } from '@/entities/viewer/api/auth';
 import { AuthState } from '@/entities/viewer/model/types';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -13,7 +8,7 @@ const initialState = {
 } satisfies AuthState as AuthState;
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'authReducer',
   initialState,
   reducers: {
     login: (state) => {
@@ -24,47 +19,19 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(checkAuth.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(checkAuth.fulfilled, (state, action) => {
-        state.isAuth = action.payload;
+    builder.addMatcher(
+      authApi.endpoints.isLoggedIn.matchFulfilled,
+      (state, { payload }) => {
+        state.isAuth = payload;
         state.isLoading = false;
-      })
-      .addCase(checkAuth.rejected, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(logoutThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(logoutThunk.fulfilled, (state, action) => {
-        state.isAuth = !action.payload;
-        state.isLoading = false;
-      })
-      .addCase(logoutThunk.rejected, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(loginThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(loginThunk.fulfilled, (state, action) => {
-        state.isAuth = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(loginThunk.rejected, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(registerThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(registerThunk.fulfilled, (state, action) => {
-        state.isAuth = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(registerThunk.rejected, (state) => {
-        state.isLoading = false;
-      });
+      },
+    );
+    builder.addMatcher(authApi.endpoints.isLoggedIn.matchPending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addMatcher(authApi.endpoints.isLoggedIn.matchRejected, (state) => {
+      state.isLoading = false;
+    });
   },
 });
 

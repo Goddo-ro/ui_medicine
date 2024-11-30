@@ -1,25 +1,25 @@
-import { registerThunk } from '@/entities/viewer';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { registerData } from '@/pages/register/model/register-schema';
 
-import { useAppDispatch } from '@/shared/lib/store';
+import { auth } from '@/shared/api/firebase';
 import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
 import { paths } from '@/shared/routes/routes';
 
 export const useRegister = () => {
   const [errors, setErrors] = useState<FieldError[]>([]);
 
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const register = (formData: FormData) => {
+  // TODO: message of successful registration
+
+  const register = async (formData: FormData) => {
     try {
       const { email, password } = validate(formData);
-      dispatch(registerThunk({ email, password })).then(() => {
-        navigate(paths.login);
-      });
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate(paths.login);
     } catch (error: unknown) {
       errorParser(
         error,

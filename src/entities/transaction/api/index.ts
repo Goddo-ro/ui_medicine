@@ -1,15 +1,12 @@
 import { Transaction } from '@/entities/transaction';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/shared/api/client';
+import { API_URL, baseQueryWithAuth } from '@/shared/api/client';
 import { TRANSACTION_BASE_URL } from '@/shared/consts/baseURLs';
 
 export const transactionApi = createApi({
   reducerPath: TRANSACTION_BASE_URL,
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${API_URL}/${TRANSACTION_BASE_URL}`,
-    credentials: 'include',
-  }),
+  baseQuery: baseQueryWithAuth(`${API_URL}/${TRANSACTION_BASE_URL}`),
   tagTypes: ['Transaction'],
   endpoints: (builder) => ({
     getTransactions: builder.query<Transaction[], void>({

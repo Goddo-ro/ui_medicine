@@ -1,6 +1,6 @@
 import { AuthRouter } from '@/app/router/AuthRoute';
 import store from '@/app/store';
-import { checkAuth } from '@/entities/viewer';
+import { authApi } from '@/entities/viewer/api/auth';
 import { Suspense, lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -15,6 +15,7 @@ import { NotFound } from '@/pages/notFound';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
+import { getFirebaseToken } from '@/shared/api/client';
 import { paths } from '@/shared/routes/routes';
 
 const Medkit = lazy(() =>
@@ -54,7 +55,6 @@ const router = createBrowserRouter([
         children: [
           {
             path: paths.medkit,
-            // element: <Medkit />,
             element: (
               <Suspense>
                 <Medkit />
@@ -91,12 +91,13 @@ const router = createBrowserRouter([
 async function authLoader() {
   const state = store.getState();
 
-  if (state.auth.isAuth) {
+  if (state.authReducer.isAuth) {
     return true;
   }
 
   try {
-    return await store.dispatch(checkAuth()).unwrap();
+    const token = await getFirebaseToken();
+    return await store.dispatch(authApi.endpoints.isLoggedIn.initiate(token));
   } catch {
     return false;
   }

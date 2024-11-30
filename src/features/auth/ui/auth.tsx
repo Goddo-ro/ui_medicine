@@ -1,7 +1,8 @@
-import { logoutThunk, selectAuth } from '@/entities/viewer';
+import { logout, selectAuth } from '@/entities/viewer';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 
+import { auth } from '@/shared/api/firebase';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
 
@@ -16,7 +17,8 @@ export const Auth = () => {
       {isAuth ? (
         <button
           onClick={() => {
-            dispatch(logoutThunk());
+            auth.signOut();
+            dispatch(logout());
           }}
           className={classes.exit}
           aria-label='Exit'
