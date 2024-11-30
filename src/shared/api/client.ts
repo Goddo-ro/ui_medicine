@@ -9,8 +9,6 @@ export const BASE_HEADERS = {
 };
 axios.defaults.withCredentials = true;
 
-// TODO: rewrite axios instance with RTK Query
-
 class ApiInstance {
   private axios: AxiosInstance;
 
