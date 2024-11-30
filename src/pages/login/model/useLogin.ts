@@ -15,6 +15,8 @@ export const useLogin = () => {
 
   // TODO: HIGH add error handler
 
+  // TODO: make code DRY
+
   const login = async (formData: FormData) => {
     try {
       const { email, password } = validate(formData);

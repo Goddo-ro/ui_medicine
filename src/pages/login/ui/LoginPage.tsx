@@ -1,13 +1,12 @@
-import 'firebase/compat/auth';
-
 import { useLogin } from '@/pages/login/model/useLogin';
+import { LoginAuthVariants } from '@/pages/login/ui/LoginAuthVariants';
 
 import { Button } from '@/shared/ui/button/Button';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
 
 export const LoginPage = () => {
-  const { login, loginWithGoogle, errors } = useLogin();
+  const { login, errors } = useLogin();
 
   return (
     <Form
@@ -38,7 +37,7 @@ export const LoginPage = () => {
 
       <Button type='submit'>Войти</Button>
 
-      <button onClick={() => loginWithGoogle()}>Google</button>
+      <LoginAuthVariants />
     </Form>
   );
 };
