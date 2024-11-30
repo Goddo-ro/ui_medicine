@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { registerData } from '@/pages/register/model/register-schema';
 
 import { useAppDispatch } from '@/shared/lib/store';
+import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
 import { paths } from '@/shared/routes/routes';
-import { FieldError, errorParser } from '@/shared/zod/errorParser';
 
 export const useRegister = () => {
   const [errors, setErrors] = useState<FieldError[]>([]);

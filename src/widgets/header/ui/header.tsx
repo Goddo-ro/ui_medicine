@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { headerNavLinks } from '@/shared/consts/headerNavLinks';
 import AppIcon from '@/shared/icons/medicine.svg';
 
-import classes from './header.module.scss';
+import classes from './Header.module.scss';
 
 export const Header = () => {
   const links = headerNavLinks.map((link) => (

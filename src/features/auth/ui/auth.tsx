@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
 import { paths } from '@/shared/routes/routes';
 
-import classes from './auth.module.scss';
+import classes from './Auth.module.scss';
 
 export const Auth = () => {
   const dispatch = useAppDispatch();

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { loginData } from '@/pages/login/model/login-schema';
 
 import { useAppDispatch } from '@/shared/lib/store';
-import { FieldError, errorParser } from '@/shared/zod/errorParser';
+import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
 
 export const useLogin = () => {
   const [errors, setErrors] = useState<FieldError[]>([]);
