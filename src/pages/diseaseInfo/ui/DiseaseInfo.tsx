@@ -1,13 +1,16 @@
 import { PathHistory } from '@/widgets/pathHistory';
+import { Link } from 'react-router-dom';
 
 import { useDiseaseFetch } from '@/pages/diseaseInfo/model/useDiseaseFetch';
 import { useHistoryPaths } from '@/pages/diseaseInfo/model/useHistoryPaths';
+
+import { generatePath, paths } from '@/shared/routes/routes';
 
 import { CircularProgress } from '@mui/material';
 
 import classes from './DiseaseInfo.module.scss';
 
-// TODO: test not number param cases
+// TODO: add error message for bad request
 
 export const DiseaseInfo = () => {
   const { data, isLoading } = useDiseaseFetch();
@@ -45,7 +48,15 @@ export const DiseaseInfo = () => {
               ) : (
                 <ul className={classes.list}>
                   {data.medicines.map((medicine) => (
-                    <li key={medicine.id}>{medicine.title}</li>
+                    <li key={medicine.id}>
+                      <Link
+                        to={generatePath(paths.medicineInfo, {
+                          id: medicine.id,
+                        })}
+                      >
+                        {medicine.title}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               )}

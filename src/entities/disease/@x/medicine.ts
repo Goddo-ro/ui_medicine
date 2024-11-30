@@ -1,1 +1,1 @@
-export type { IDisease } from '../model/types';
+export type { Disease } from '../model/types';

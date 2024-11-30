@@ -1,20 +1,20 @@
-import { IDisease } from '@/entities/disease/@x/medicine';
+import { Disease } from '@/entities/disease/@x/medicine';
 
-interface IType {
+interface MedicineType {
   readonly id: number;
   readonly title: string;
 }
 
-export interface IMedicine {
+export interface Medicine {
   readonly id: number;
   readonly title: string;
   readonly type_id: number;
   readonly description: string;
-  readonly type: IType;
-  readonly diseases: IDisease[];
+  readonly type: MedicineType;
+  readonly diseases: Disease[];
 }
 
-export interface IGetMedicineBody {
+export interface GetMedicineBody {
   readonly search?: string;
   readonly startsWith?: string;
 }

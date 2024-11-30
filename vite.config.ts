@@ -10,6 +10,9 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 800,
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -34,5 +37,8 @@ export default defineConfig({
     //     cookieDomainRewrite: '',
     //   },
     // },
+  },
+  preview: {
+    port: 80,
   },
 });

@@ -15,4 +15,9 @@
   .skeleton {
     width: 150px;
   }
+
+  .button.active {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+  }
 }

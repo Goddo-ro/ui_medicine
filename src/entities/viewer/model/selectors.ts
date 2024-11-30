@@ -1,4 +1,4 @@
-import { IAuthState } from '@/entities/viewer/model/types';
+import { AuthState } from '@/entities/viewer/model/types';
 import { createSelector } from '@reduxjs/toolkit';
 
 import type { RootState } from '@/shared/lib/store';
@@ -10,10 +10,10 @@ const selectBase = createSelector(
 
 export const selectAuth = createSelector(
   selectBase,
-  (state: IAuthState) => state.isAuth,
+  (state: AuthState) => state.isAuth,
 );
 
 export const selectLoading = createSelector(
   selectBase,
-  (state: IAuthState) => state.isLoading,
+  (state: AuthState) => state.isLoading,
 );

@@ -1,5 +1,3 @@
-// TODO: remove type prefix for all types
-
 export const paths = {
   medicines: '/medicine',
   medicinePointer: '/medicine/:letter',
@@ -11,6 +9,8 @@ export const paths = {
   login: '/login',
   register: '/register',
 } as const;
+
+export type Paths = typeof paths;
 
 type RouteParams = {
   [paths.medicinePointer]: { letter: string };

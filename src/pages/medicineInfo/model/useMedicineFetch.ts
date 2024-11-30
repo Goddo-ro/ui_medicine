@@ -2,12 +2,12 @@ import { useLazyGetMedicineByIdQuery } from '@/entities/medicine';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-type IMedicineInfoParams = {
+type MedicineInfoParams = {
   id: string;
 };
 
 export const useMedicineFetch = () => {
-  const { id } = useParams<IMedicineInfoParams>();
+  const { id } = useParams<MedicineInfoParams>();
   const [trigger, result] = useLazyGetMedicineByIdQuery();
 
   useEffect(() => {

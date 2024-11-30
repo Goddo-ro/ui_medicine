@@ -1,20 +1,11 @@
-import {
-  ITransaction,
-  createTransaction,
-  deleteTransaction,
-  getTransactions,
-  updateTransaction,
-} from '@/entities/transaction';
-import { selectAuth } from '@/entities/viewer';
+import { Transaction } from '@/entities/transaction';
 import clsx from 'clsx';
-import { useCallback, useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useCallback, useState } from 'react';
 
 import { columns } from '@/pages/medkit/model/consts';
+import { useTableFetcher } from '@/pages/medkit/model/useTableFetcher';
 import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
-import { useAppSelector } from '@/shared/lib/store';
-import { paths } from '@/shared/routes/routes';
 import { DataTable } from '@/shared/ui/table/DataTable';
 
 import { GridToolbar } from '@mui/x-data-grid';
@@ -23,82 +14,36 @@ import classes from './Medkit.module.scss';
 
 // TODO: create UI component for errors
 
+export type SelectedIds = number[];
+
 export const Medkit = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [selectedIds, setSelectedIds] = useState<SelectedIds>([]);
 
-  const isAuth = useAppSelector(selectAuth);
+  const clearSelected = useCallback(() => {
+    setSelectedIds([]);
+  }, [setSelectedIds]);
 
-  const fetchTransactions = useCallback(() => {
-    if (!isAuth) return;
-    setIsLoading(true);
-    getTransactions()
-      .then((res) => {
-        setTransactions(res.data);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const { isLoading, transactions, handleAdd, handleDelete, handleUpdate } =
+    useTableFetcher(clearSelected);
+
+  const close = useCallback(() => {
+    setIsAddDialogOpen(false);
   }, []);
-
-  useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
-
-  const handleAdd = (transaction: ITransaction) => {
-    createTransaction(transaction).then(() => {
-      fetchTransactions();
-    });
-  };
-
-  // TODO: search by medicine title
-
-  const handleDelete = () => {
-    setIsLoading(true);
-    const deletingPromises = selectedIds.map((id) => {
-      deleteTransaction(id);
-    });
-    Promise.all(deletingPromises)
-      .then(() => {
-        fetchTransactions();
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const handleUpdate = (newTransaction: ITransaction) => {
-    const selectedId = selectedIds[0];
-    if (selectedId === undefined) return;
-    setIsLoading(true);
-    updateTransaction(selectedId, newTransaction)
-      .then(() => {
-        fetchTransactions();
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  if (!isAuth) return <Navigate to={paths.login} replace />;
 
   return (
     <>
       <MedkitAddDialog
         onAdd={handleAdd}
         open={isAddDialogOpen}
-        close={() => {
-          setIsAddDialogOpen(false);
+        close={close}
+        onClose={close}
+        onUpdate={(transaction: Transaction) => {
+          handleUpdate(transaction, selectedIds[0]);
         }}
-        onClose={() => {
-          setIsAddDialogOpen(false);
-        }}
-        onUpdate={handleUpdate}
         transaction={
           selectedIds?.length === 1
-            ? transactions.find(
+            ? transactions?.find(
                 (transaction) => transaction.id === selectedIds[0],
               )
             : undefined
@@ -118,7 +63,9 @@ export const Medkit = () => {
               setIsAddDialogOpen(true);
             },
             disableEdit: selectedIds.length !== 1,
-            onDelete: handleDelete,
+            onDelete: () => {
+              handleDelete(selectedIds);
+            },
             disableDelete: !selectedIds.length,
           }}
           initialState={{
@@ -129,6 +76,7 @@ export const Medkit = () => {
             },
           }}
           checkboxSelection
+          rowSelectionModel={selectedIds}
           onRowSelectionModelChange={(ids) => {
             setSelectedIds(ids.map((id) => Number.parseInt(id.toString())));
           }}

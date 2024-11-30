@@ -1,11 +1,11 @@
-import { paths } from '@/shared/routes/routes';
+import { Paths, paths } from '@/shared/routes/routes';
 
-export type IHeaderNavLinkType = {
+type HeaderNavLinkType = {
   readonly title: string;
-  readonly to: paths;
+  readonly to: Paths[keyof Paths];
 };
 
-export const headerNavLinks: IHeaderNavLinkType[] = [
+export const headerNavLinks: HeaderNavLinkType[] = [
   {
     title: 'Лекарства',
     to: paths.medicines,

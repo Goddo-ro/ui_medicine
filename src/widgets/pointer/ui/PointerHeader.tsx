@@ -1,22 +1,22 @@
-import { IPointerParams } from '@/widgets/pointer/model/types';
+import { PointerParams } from '@/widgets/pointer/model/types';
 import clsx from 'clsx';
 import { NavLink, useParams } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-import { IPrefix } from '@/shared/ui/prefixes/Prefixes';
+import { Prefix } from '@/shared/ui/prefixes/Prefixes';
 
 import classes from './Pointer.module.scss';
 
-export interface IPointerHeaderProps {
-  prefixes?: IPrefix;
+export interface PointerHeaderProps {
+  prefixes?: Prefix;
   letterPathGenerator: (letter: string) => string;
 }
 
 export const PointerHeader = ({
   prefixes,
   letterPathGenerator,
-}: IPointerHeaderProps) => {
-  const { letter } = useParams<IPointerParams>();
+}: PointerHeaderProps) => {
+  const { letter } = useParams<PointerParams>();
 
   const letters = Object.keys(prefixes ?? {}).map((letter) => (
     <li key={letter}>

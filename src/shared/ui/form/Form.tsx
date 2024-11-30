@@ -2,12 +2,12 @@ import { FormEventHandler, PropsWithChildren } from 'react';
 
 import classes from './Form.module.scss';
 
-interface IFormProps extends PropsWithChildren {
+interface FormProps extends PropsWithChildren {
   onSubmit?: FormEventHandler<HTMLFormElement>;
   title?: string;
 }
 
-export const Form = ({ onSubmit, title, children }: IFormProps) => {
+export const Form = ({ onSubmit, title, children }: FormProps) => {
   return (
     <div className={classes.formContainer}>
       <form onSubmit={onSubmit} className={classes.form}>

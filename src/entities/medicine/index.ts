@@ -1,4 +1,4 @@
-export type { IMedicine } from './model/types';
+export type { Medicine } from './model/types';
 export {
   useGetMedicineQuery,
   useGetMedicineByIdQuery,

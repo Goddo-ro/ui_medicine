@@ -1,23 +1,29 @@
 import {
-  IPointerBodyProps,
   PointerBody,
+  PointerBodyProps,
 } from '@/widgets/pointer/ui/PointerBody';
 import {
-  IPointerHeaderProps,
   PointerHeader,
+  PointerHeaderProps,
 } from '@/widgets/pointer/ui/PointerHeader';
+import { PointerSkeleton } from '@/widgets/pointer/ui/PointerSkeleton';
 
 import classes from './Pointer.module.scss';
 
-type TPointerProps = IPointerHeaderProps & IPointerBodyProps;
+type TPointerProps = { isLoading?: boolean } & PointerHeaderProps &
+  PointerBodyProps;
 
-// TODO: add skeletons
-
-export const Pointer = (props: TPointerProps) => {
+export const Pointer = ({ isLoading, ...rest }: TPointerProps) => {
   return (
-    <div className={classes.container}>
-      <PointerHeader {...props} />
-      <PointerBody {...props} />
-    </div>
+    <>
+      {isLoading ? (
+        <PointerSkeleton />
+      ) : (
+        <div className={classes.container}>
+          <PointerHeader {...rest} />
+          <PointerBody {...rest} />
+        </div>
+      )}
+    </>
   );
 };

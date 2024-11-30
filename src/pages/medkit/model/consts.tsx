@@ -1,11 +1,11 @@
-import { IMedicine } from '@/entities/medicine';
-import { ITransaction } from '@/entities/transaction';
+import { Medicine } from '@/entities/medicine';
+import { Transaction } from '@/entities/transaction';
 
 import { formatDate } from '@/shared/lib/date';
 
 import { GridColDef } from '@mui/x-data-grid';
 
-export const columns: GridColDef<ITransaction>[] = [
+export const columns: GridColDef<Transaction>[] = [
   {
     field: 'id',
     headerName: 'ID',
@@ -30,10 +30,10 @@ export const columns: GridColDef<ITransaction>[] = [
     renderCell: (params) => {
       return <b>{params.row.medicine?.title || 'Нет названия'}</b>;
     },
-    valueGetter: (medicine: IMedicine) => {
-      return <b>{medicine.title}</b>;
+    valueGetter: (medicine: Medicine) => {
+      return medicine.title;
     },
-    sortComparator: (m1: IMedicine, m2: IMedicine) =>
+    sortComparator: (m1: Medicine, m2: Medicine) =>
       m1.title.localeCompare(m2.title),
     minWidth: 200,
     flex: 1,

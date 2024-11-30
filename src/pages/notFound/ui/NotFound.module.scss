@@ -1,0 +1,44 @@
+$blue: #3eb8eb;
+
+.container {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: normal;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 2rem;
+  }
+
+  .notFoundIcon {
+    height: 20%;
+    max-height: 200px;
+    width: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 4rem;
+    text-transform: uppercase;
+    color: $blue;
+  }
+
+  p {
+    color: #184a56;
+    font-size: 1.25rem;
+  }
+
+  .button {
+    color: $blue;
+    border: 2px solid $blue;
+    border-radius: 24px;
+    width: fit-content;
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+}
