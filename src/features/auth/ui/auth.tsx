@@ -16,8 +16,8 @@ export const Auth = () => {
     <div className={classes.container}>
       {isAuth ? (
         <button
-          onClick={() => {
-            auth.signOut();
+          onClick={async () => {
+            await auth.signOut();
             dispatch(logout());
           }}
           className={classes.exit}

@@ -15,12 +15,9 @@ export const useLogin = () => {
 
   // TODO: HIGH add error handler
 
-  // TODO: make code DRY
-
-  const login = async (formData: FormData) => {
+  const loginHandler = async (loginFn: () => Promise<unknown>) => {
     try {
-      const { email, password } = validate(formData);
-      await signInWithEmailAndPassword(auth, email, password);
+      await loginFn();
       dispatch(loginAction());
     } catch (error) {
       errorParser(
@@ -33,19 +30,17 @@ export const useLogin = () => {
     }
   };
 
+  const login = async (formData: FormData) => {
+    loginHandler(() => {
+      const { email, password } = validate(formData);
+      return signInWithEmailAndPassword(auth, email, password);
+    });
+  };
+
   const loginWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      dispatch(loginAction());
-    } catch (error) {
-      errorParser(
-        error,
-        (errors) => setErrors(errors),
-        (error) => {
-          console.error('Unexpected validation error:', error);
-        },
-      );
-    }
+    loginHandler(() => {
+      return signInWithPopup(auth, googleProvider);
+    });
   };
 
   return { login, loginWithGoogle, errors };

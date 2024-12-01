@@ -31,9 +31,7 @@ export const LoginAuthVariants = () => {
     <div className={classes.variants}>
       <div className={classes.variantsMessage}>
         <div className={classes.line}></div>
-        <span>
-          <b>Войти</b> с помощью:
-        </span>
+        <span>или</span>
         <div className={classes.line}></div>
       </div>
       {variants.map(({ variantName, iconSrc, authMethod }, index) => (

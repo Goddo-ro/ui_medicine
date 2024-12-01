@@ -1,4 +1,4 @@
-// TODO: add tests
+// TODO: HIGH add tests
 
 export function formatDate(input: string): string {
   const date = new Date(input);
