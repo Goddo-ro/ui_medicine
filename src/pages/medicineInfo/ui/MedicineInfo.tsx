@@ -5,13 +5,14 @@ import { useHistoryPaths } from '@/pages/medicineInfo/model/useHistoryPaths';
 import { useMedicineFetch } from '@/pages/medicineInfo/model/useMedicineFetch';
 
 import { generatePath, paths } from '@/shared/routes/routes';
+import { Error } from '@/shared/ui/error/Error';
 
 import { CircularProgress } from '@mui/material';
 
 import classes from './MedicineInfo.module.scss';
 
 export const MedicineInfo = () => {
-  const { data, isLoading } = useMedicineFetch();
+  const { data, isLoading, isError } = useMedicineFetch();
   const historyPaths = useHistoryPaths(
     data?.title ? data.title[0] : '-',
     data?.title ?? '',
@@ -25,6 +26,9 @@ export const MedicineInfo = () => {
           <CircularProgress className={classes.loader} />
         ) : (
           <>
+            {isError && (
+              <Error errorText='При загрузке данных произошла ошибка, перезагрузите страницу.' />
+            )}
             <h1>{data?.title}</h1>
             <section className={classes.section}>
               <h2>Тип:</h2>

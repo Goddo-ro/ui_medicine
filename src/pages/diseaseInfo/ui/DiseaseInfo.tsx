@@ -5,15 +5,14 @@ import { useDiseaseFetch } from '@/pages/diseaseInfo/model/useDiseaseFetch';
 import { useHistoryPaths } from '@/pages/diseaseInfo/model/useHistoryPaths';
 
 import { generatePath, paths } from '@/shared/routes/routes';
+import { Error } from '@/shared/ui/error/Error';
 
 import { CircularProgress } from '@mui/material';
 
 import classes from './DiseaseInfo.module.scss';
 
-// TODO: add error message for bad request
-
 export const DiseaseInfo = () => {
-  const { data, isLoading } = useDiseaseFetch();
+  const { data, isLoading, isError } = useDiseaseFetch();
   const historyPaths = useHistoryPaths(
     data?.title ? data.title[0] : '-',
     data?.title ?? '',
@@ -27,6 +26,9 @@ export const DiseaseInfo = () => {
           <CircularProgress className={classes.loader} />
         ) : (
           <>
+            {isError && (
+              <Error errorText='При загрузке данных произошла ошибка, перезагрузите страницу.' />
+            )}
             <h1>{data?.title}</h1>
             <section className={classes.section}>
               <h2>Симптомы</h2>
