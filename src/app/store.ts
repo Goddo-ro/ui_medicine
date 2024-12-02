@@ -3,6 +3,7 @@ import { medicineApi } from '@/entities/medicine/api';
 import { transactionApi } from '@/entities/transaction/api';
 import { AuthReducer } from '@/entities/viewer';
 import { authApi } from '@/entities/viewer/api/auth';
+import { MessagesReducer } from '@/widgets/messagesProvider';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     [transactionApi.reducerPath]: transactionApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     authReducer: AuthReducer,
+    messagesReducer: MessagesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([

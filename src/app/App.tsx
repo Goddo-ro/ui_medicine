@@ -1,12 +1,13 @@
 import { Providers } from '@/app/providers/Providers';
 import { AppRouter } from '@/app/router';
+import { MessagesProvider } from '@/widgets/messagesProvider';
 
 // TODO: create 403 (token expired) handler
-// TODO: HIGH general messages provider
 
 function App() {
   return (
     <Providers>
+      <MessagesProvider />
       <AppRouter />
     </Providers>
   );

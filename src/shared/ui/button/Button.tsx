@@ -9,14 +9,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = ({ isLoading, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
-      disabled={props.disabled || props.isLoading}
+      disabled={props.disabled || isLoading}
       className={clsx(classes.button, props.className)}
     >
-      {props.isLoading ? <CircularProgress size={'1em'} /> : props.children}
+      {isLoading ? <CircularProgress size={'1em'} /> : props.children}
     </button>
   );
 };

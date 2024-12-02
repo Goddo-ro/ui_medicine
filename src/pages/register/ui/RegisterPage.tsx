@@ -5,7 +5,7 @@ import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
 
 export const RegisterPage = () => {
-  const { register, errors } = useRegister();
+  const { register, errors, isLoading } = useRegister();
 
   return (
     <Form
@@ -14,6 +14,7 @@ export const RegisterPage = () => {
         register(new FormData(e.currentTarget));
       }}
       title='Регистрация'
+      isLoading={isLoading}
     >
       <Input
         type='input'
@@ -44,7 +45,9 @@ export const RegisterPage = () => {
         required
       />
 
-      <Button type='submit'>Войти</Button>
+      <Button type='submit' isLoading={isLoading}>
+        Войти
+      </Button>
     </Form>
   );
 };
