@@ -1,4 +1,5 @@
 import { PrefixWord, PrefixWords } from '@/widgets/pointer/model/types';
+import { useAnchorScroll } from '@/widgets/pointer/model/useAnchorScroll';
 import { Link } from 'react-router-dom';
 
 import classes from './Pointer.module.scss';
@@ -9,6 +10,8 @@ export interface PointerBodyProps {
 }
 
 export const PointerBody = ({ data, wordPathGenerator }: PointerBodyProps) => {
+  useAnchorScroll();
+
   return (
     <div className={classes.body}>
       {Object.entries(data ?? {}).map(([prefix, words]) => (

@@ -13,8 +13,6 @@ interface PrefixesProps {
   prefixLinkGenerator: (letter: string, prefix: string) => string;
 }
 
-// TODO: fix hash link scroll for prefixes
-
 export const Prefixes = ({
   data,
   isLoading,

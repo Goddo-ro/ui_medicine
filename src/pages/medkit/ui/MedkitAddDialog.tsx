@@ -25,7 +25,6 @@ export const MedkitAddDialog = ({
   transaction,
   ...rest
 }: MedkitAddDialogProps) => {
-  // TODO: fix datepickers overflowing
   const { data: medicines = [] } = useGetMedicineQuery({});
 
   const {
