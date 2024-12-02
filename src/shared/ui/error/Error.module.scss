@@ -1,0 +1,10 @@
+.error {
+  background-color: rgba(253, 92, 92, 0.2);
+  color: $danger-color;
+  font-size: 0.75em;
+  display: block;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+}

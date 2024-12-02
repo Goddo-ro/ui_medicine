@@ -1,12 +1,17 @@
-import { useLogin } from '@/pages/login/model/useLogin';
+import { generalErrorName, useLogin } from '@/pages/login/model/useLogin';
 import { LoginAuthVariants } from '@/pages/login/ui/LoginAuthVariants';
 
 import { Button } from '@/shared/ui/button/Button';
+import { Error } from '@/shared/ui/error/Error';
 import { Form } from '@/shared/ui/form/Form';
 import { Input } from '@/shared/ui/input/Input';
 
 export const LoginPage = () => {
-  const { login, errors } = useLogin();
+  const { login, errors, setErrors, isLoading } = useLogin();
+
+  const generalError = errors.find(
+    (error) => error.fieldName === generalErrorName,
+  );
 
   return (
     <Form
@@ -15,7 +20,10 @@ export const LoginPage = () => {
         login(new FormData(e.currentTarget));
       }}
       title='Вход в аккаунт'
+      isLoading={isLoading}
     >
+      {generalError && <Error errorText={generalError.message} />}
+
       <Input
         type='input'
         label='Почта'
@@ -23,6 +31,11 @@ export const LoginPage = () => {
         name='email'
         required
         error={errors.find((error) => error.fieldName === 'email')?.message}
+        onChange={() => {
+          setErrors((prev) =>
+            prev.filter((error) => error.fieldName !== 'email'),
+          );
+        }}
       />
 
       <Input
@@ -31,11 +44,18 @@ export const LoginPage = () => {
         id='password'
         name='password'
         autoComplete='on'
-        error={errors.find((error) => error.fieldName === 'password')?.message}
         required
+        error={errors.find((error) => error.fieldName === 'password')?.message}
+        onChange={() => {
+          setErrors((prev) =>
+            prev.filter((error) => error.fieldName !== 'password'),
+          );
+        }}
       />
 
-      <Button type='submit'>Войти</Button>
+      <Button type='submit' isLoading={isLoading}>
+        Войти
+      </Button>
 
       <LoginAuthVariants />
     </Form>

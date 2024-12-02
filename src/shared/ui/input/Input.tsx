@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import { InputHTMLAttributes, useState } from 'react';
 
+import { Error } from '@/shared/ui/error/Error';
+
 import classes from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

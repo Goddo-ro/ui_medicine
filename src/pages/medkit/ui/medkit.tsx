@@ -12,8 +12,6 @@ import { GridToolbar } from '@mui/x-data-grid';
 
 import classes from './Medkit.module.scss';
 
-// TODO: create UI component for errors
-
 export type SelectedIds = number[];
 
 export const Medkit = () => {

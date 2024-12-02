@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
 
+  &.loading {
+    pointer-events: none;
+  }
+
   .form {
     width: 100%;
     max-width: 600px;

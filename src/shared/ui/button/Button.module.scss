@@ -6,4 +6,10 @@
   width: 100%;
   color: $while-color;
   font-size: 1em;
+
+  &:disabled,
+  &[disabled] {
+    background-color: #d5d5d5;
+    color: #666666;
+  }
 }

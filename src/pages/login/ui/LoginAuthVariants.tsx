@@ -39,6 +39,7 @@ export const LoginAuthVariants = () => {
           key={index}
           className={classes.variant}
           onClick={() => authMethod()}
+          type='button'
         >
           <img src={iconSrc} alt={variantName} />
           <span>
