@@ -21,9 +21,9 @@ export const useToolbarButtons = () => {
   }, []);
 
   const deleteAction = useCallback(async (selectedIds: SelectedIds) => {
-    const deletingPromises = selectedIds.map((id) => {
-      deleteTransaction(id).unwrap();
-    });
+    const deletingPromises = selectedIds.map(
+      async (id) => await deleteTransaction(id).unwrap(),
+    );
     return await Promise.all(deletingPromises);
   }, []);
 

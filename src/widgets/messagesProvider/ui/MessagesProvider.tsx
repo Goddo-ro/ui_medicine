@@ -8,8 +8,6 @@ export const MessagesProvider = () => {
   const { messages } = useMessagesProvider();
   const { isVisible } = useMessagesAnimation(messages);
 
-  console.log(isVisible);
-
   return (
     <div className={clsx(classes.messages, { [classes.visible]: isVisible })}>
       {messages.map((message) => (

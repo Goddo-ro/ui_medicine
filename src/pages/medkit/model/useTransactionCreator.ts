@@ -33,7 +33,6 @@ export const useTransactionCreator = ({
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // TODO: handle errors;
     const transaction = formTransaction();
     if (transaction) {
       if (isUpdating && onUpdate) {
