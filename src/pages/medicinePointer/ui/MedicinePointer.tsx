@@ -3,11 +3,12 @@ import {
   useGetMedicinePrefixesWordsQuery,
 } from '@/entities/medicine';
 import { PathHistory } from '@/widgets/pathHistory';
-import { Pointer, PointerParams, PrefixWord } from '@/widgets/pointer';
+import { Pointer } from '@/widgets/pointer';
 import { useParams } from 'react-router-dom';
 
 import { useHistoryPaths } from '@/pages/medicinePointer/model/useHistoryPaths';
 
+import { PointerParams, PrefixWord } from '@/shared/prefix';
 import { generatePath, paths } from '@/shared/routes';
 import { Error } from '@/shared/ui/error';
 
