@@ -38,20 +38,4 @@ $link-padding: 12px;
       color: $primary-color;
     }
   }
-
-  .header__links {
-    display: flex;
-    align-items: center;
-    gap: $link-padding;
-
-    a:not(:last-child) {
-      padding-right: $link-padding;
-      border-right: 2px solid;
-    }
-
-    a.active {
-      text-decoration-line: underline;
-      text-underline-offset: 4px;
-    }
-  }
 }

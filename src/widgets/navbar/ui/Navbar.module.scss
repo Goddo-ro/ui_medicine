@@ -1,0 +1,14 @@
+.navbar {
+  background-color: #edf1fc;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  a.active {
+    text-decoration: underline;
+  }
+}

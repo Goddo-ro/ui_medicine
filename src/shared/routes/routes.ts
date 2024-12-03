@@ -8,6 +8,7 @@ export const paths = {
   medkit: '/',
   login: '/login',
   register: '/register',
+  library: '/library',
 } as const;
 
 export type Paths = typeof paths;

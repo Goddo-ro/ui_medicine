@@ -39,6 +39,8 @@ li {
     margin-top: $header-height;
     width: 100%;
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .app__content:not(:has(.unwidth)) {
