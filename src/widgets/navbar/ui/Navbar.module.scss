@@ -4,18 +4,35 @@
   align-self: center;
   width: 100%;
   max-width: $content-max-width;
+}
 
+.navbar {
+  background-color: #edf1fc;
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  a.active {
+    text-decoration: underline;
+  }
+}
+
+.paper {
+  background-color: transparent !important;
+  width: 100%;
+  max-width: unset;
+  box-shadow: none !important;
+
+  :global(.MuiList-root) {
+    padding: 0;
+  }
+}
+
+@media (max-width: $wide-screen-breakpoint) {
   .navbar {
-    background-color: #edf1fc;
-    padding: 1.25rem 1rem;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-
-    a.active {
-      text-decoration: underline;
-    }
+    flex-direction: column;
   }
 }

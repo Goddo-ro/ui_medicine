@@ -6,12 +6,17 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   gap: 1rem;
   background-color: $main-background-color;
   max-height: $fixed-header-height;
 
-  // > * {
-  //   width: 100%;
-  // }
+  .search {
+    padding-inline: $content-inline-padding;
+  }
+}
+
+@media (min-width: $wide-screen-breakpoint) {
+  .search {
+    display: none !important;
+  }
 }

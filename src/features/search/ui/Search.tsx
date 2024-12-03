@@ -1,6 +1,7 @@
 import { generatePathForOption } from '@/features/search/model/generatePathForOption';
 import { highlightMatch } from '@/features/search/model/highlightMatch';
 import { useSearch } from '@/features/search/model/useSearch';
+import clsx from 'clsx';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,14 +9,18 @@ import { Autocomplete, TextField } from '@mui/material';
 
 import classes from './Search.module.scss';
 
-export const Search = () => {
+interface SearchProps {
+  className?: string;
+}
+
+export const Search = ({ className }: SearchProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { data, search, setSearch } = useSearch();
   const navigate = useNavigate();
 
   return (
     <Autocomplete
-      className={classes.search}
+      className={clsx(classes.search, className)}
       filterOptions={(x) => x}
       disablePortal
       inputValue={search}

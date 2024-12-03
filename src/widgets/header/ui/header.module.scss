@@ -28,4 +28,20 @@ $link-padding: 12px;
       color: $primary-color;
     }
   }
+
+  .search {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: $wide-screen-breakpoint) {
+  .navbarToggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: $wide-screen-breakpoint) {
+  .search {
+    display: none !important;
+  }
 }

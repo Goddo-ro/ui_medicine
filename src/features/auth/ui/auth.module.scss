@@ -21,3 +21,15 @@
     text-underline-offset: 4px;
   }
 }
+
+.authButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  font-size: 1rem;
+
+  & > * {
+    font-size: 1rem;
+  }
+}
