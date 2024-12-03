@@ -2,7 +2,7 @@ import { Providers } from '@/app/providers/Providers';
 import { AppRouter } from '@/app/router';
 import { MessagesProvider } from '@/widgets/messagesProvider';
 
-// TODO: create 403 (token expired) handler
+// TODO: refactor FSD app structure
 
 function App() {
   return (

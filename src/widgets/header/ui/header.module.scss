@@ -5,6 +5,7 @@ $link-padding: 12px;
 :global(.app:not(:has(.unwidth))) {
   .header__content {
     max-width: $content-max-width;
+    gap: 2rem;
   }
 }
 

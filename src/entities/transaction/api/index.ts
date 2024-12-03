@@ -2,7 +2,8 @@ import { Transaction } from '@/entities/transaction';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { API_URL, baseQueryWithAuth } from '@/shared/api/client';
-import { TRANSACTION_BASE_URL } from '@/shared/consts/baseURLs';
+
+const TRANSACTION_BASE_URL = 'transactions';
 
 export const transactionApi = createApi({
   reducerPath: TRANSACTION_BASE_URL,

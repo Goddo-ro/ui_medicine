@@ -1,12 +1,11 @@
 import { Auth } from '@/features/auth';
+import { Search } from '@/features/search';
 
 import AppIcon from '@/shared/icons/medicine.svg';
 
 import classes from './Header.module.scss';
 
 export const Header = () => {
-  // TODO: add searchbar
-
   return (
     <header className={classes.header}>
       <div className={classes.header__content}>
@@ -14,6 +13,7 @@ export const Header = () => {
           <img src={AppIcon} alt='MedWiki' />
           <h1>MedWiki</h1>
         </div>
+        <Search />
         <Auth />
       </div>
     </header>

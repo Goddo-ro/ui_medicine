@@ -3,6 +3,7 @@ import { medicineApi } from '@/entities/medicine/api';
 import { transactionApi } from '@/entities/transaction/api';
 import { AuthReducer } from '@/entities/viewer';
 import { authApi } from '@/entities/viewer/api/auth';
+import { searchApi } from '@/features/search/api';
 import { MessagesReducer } from '@/widgets/messagesProvider';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     [diseaseApi.reducerPath]: diseaseApi.reducer,
     [transactionApi.reducerPath]: transactionApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [searchApi.reducerPath]: searchApi.reducer,
     authReducer: AuthReducer,
     messagesReducer: MessagesReducer,
   },
@@ -21,6 +23,7 @@ export const store = configureStore({
       diseaseApi.middleware,
       transactionApi.middleware,
       authApi.middleware,
+      searchApi.middleware,
     ]),
 });
 

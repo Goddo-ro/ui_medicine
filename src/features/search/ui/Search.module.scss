@@ -1,0 +1,13 @@
+.search {
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+
+  :global(.MuiInputBase-root) {
+    border-radius: 16px;
+  }
+
+  :global(.MuiOutlinedInput-notchedOutline) {
+    border-color: $main-text-color;
+  }
+}

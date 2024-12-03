@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/client';
-import { AUTH_BASE_URL } from '@/shared/consts/baseURLs';
+
+const AUTH_BASE_URL = 'auth';
 
 export const authApi = createApi({
   reducerPath: AUTH_BASE_URL,
