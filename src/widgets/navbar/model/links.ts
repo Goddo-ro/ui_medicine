@@ -1,4 +1,4 @@
-import { Paths, paths } from '@/shared/routes/routes';
+import { Paths, paths } from '@/shared/routes';
 
 type NavLink = {
   readonly title: string;

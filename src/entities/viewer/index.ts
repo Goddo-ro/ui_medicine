@@ -1,2 +1,3 @@
-export { AuthReducer, login, logout } from './store/slice';
-export { selectAuth, selectLoading } from './store/selectors';
+export { AuthReducer, login, logout } from './model/slice';
+export { selectAuth, selectLoading } from './model/selectors';
+export { authApi } from './api/auth';

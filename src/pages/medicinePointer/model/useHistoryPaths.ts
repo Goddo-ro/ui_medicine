@@ -1,7 +1,7 @@
 import { PathModel } from '@/widgets/pathHistory';
 
-import { medicineHomeDisplayName } from '@/shared/consts/historyPaths';
-import { paths } from '@/shared/routes/routes';
+import { medicineHomeDisplayName } from '@/shared/history';
+import { paths } from '@/shared/routes';
 
 export const useHistoryPaths = (wordFirstLetter: string) => {
   const historyPaths: PathModel[] = [

@@ -1,6 +1,6 @@
 import { AuthRouter } from '@/app/router/AuthRoute';
 import store from '@/app/store';
-import { authApi } from '@/entities/viewer/api/auth';
+import { authApi } from '@/entities/viewer';
 import { Suspense, lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -15,11 +15,11 @@ import { NotFound } from '@/pages/notFound';
 import { RegisterPage } from '@/pages/register';
 import { Root } from '@/pages/root';
 
-import { getFirebaseToken } from '@/shared/api/client';
-import { paths } from '@/shared/routes/routes';
+import { getFirebaseToken } from '@/shared/api';
+import { paths } from '@/shared/routes';
 
 const Medkit = lazy(() =>
-  import('@/pages/medkit/ui/Medkit').then((module) => ({
+  import('@/pages/medkit').then((module) => ({
     default: module.Medkit,
   })),
 );

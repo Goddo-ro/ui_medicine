@@ -1,9 +1,10 @@
-import { Disease, GetDiseaseBody } from '@/entities/disease/model/types';
-import { PrefixWords } from '@/widgets/pointer';
+import { GetDiseaseBody } from '@/entities/disease/api/types';
+import { Disease } from '@/entities/disease/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/shared/api/client';
-import { Prefix } from '@/shared/ui/prefixes/Prefixes';
+import { API_URL } from '@/shared/api';
+import { PrefixWords } from '@/shared/prefix';
+import { Prefix } from '@/shared/ui/prefixes';
 
 const DISEASE_BASE_URL = 'disease';
 

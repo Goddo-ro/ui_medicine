@@ -8,8 +8,8 @@ import { useParams } from 'react-router-dom';
 
 import { useHistoryPaths } from '@/pages/medicinePointer/model/useHistoryPaths';
 
-import { generatePath, paths } from '@/shared/routes/routes';
-import { Error } from '@/shared/ui/error/Error';
+import { generatePath, paths } from '@/shared/routes';
+import { Error } from '@/shared/ui/error';
 
 export const MedicinePointer = () => {
   const { letter } = useParams<PointerParams>();

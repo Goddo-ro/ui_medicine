@@ -1,7 +1,7 @@
 import { useSearchQuery } from '@/features/search/api';
 import { useState } from 'react';
 
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { useDebounce } from '@/shared/lib/hooks';
 
 export const useSearch = () => {
   const [search, setSearch] = useState('');

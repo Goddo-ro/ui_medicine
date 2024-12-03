@@ -4,7 +4,7 @@ import { Transaction } from '@/entities/transaction';
 import { useTransactionBody } from '@/pages/medkit/model/useTransactionBody';
 import { useTransactionCreator } from '@/pages/medkit/model/useTransactionCreator';
 
-import { PositionedModal } from '@/shared/ui/positionedModal/PositionedModal';
+import { PositionedModal } from '@/shared/ui/positionedModal';
 
 import { Autocomplete, Button, ModalProps, TextField } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers';

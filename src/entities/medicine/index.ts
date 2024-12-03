@@ -1,5 +1,6 @@
 export type { Medicine } from './model/types';
 export {
+  medicineApi,
   useGetMedicineQuery,
   useGetMedicineByIdQuery,
   useGetMedicinePrefixesQuery,

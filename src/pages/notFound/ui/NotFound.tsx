@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import NotFoundIcon from '@/shared/icons/not-found.svg';
-import { paths } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes';
 
 import classes from './NotFound.module.scss';
 

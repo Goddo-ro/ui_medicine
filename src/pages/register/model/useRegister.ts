@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { registerData } from '@/pages/register/model/register-schema';
 
-import { auth } from '@/shared/api/firebase';
-import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
-import { paths } from '@/shared/routes/routes';
+import { auth } from '@/shared/api';
+import { FieldError, errorParser } from '@/shared/lib/zod';
+import { paths } from '@/shared/routes';
 
 export const useRegister = () => {
   const [errors, setErrors] = useState<FieldError[]>([]);

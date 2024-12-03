@@ -1,7 +1,7 @@
 import { SearchParams, SearchResponse } from '@/features/search/api/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/shared/api/client';
+import { API_URL } from '@/shared/api';
 
 const SEARCH_BASE_URL = 'search';
 

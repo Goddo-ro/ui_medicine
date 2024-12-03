@@ -1,6 +1,6 @@
 import { Option } from '@/features/search/api/types';
 
-import { generatePath, paths } from '@/shared/routes/routes';
+import { generatePath, paths } from '@/shared/routes';
 
 export const generatePathForOption = (option: Option) => {
   return 'description' in option

@@ -1,13 +1,11 @@
-import { User } from '@/shared/types/user';
+export interface User {
+  readonly uid: string;
+  readonly email: string;
+}
 
 export interface AuthState {
   readonly isAuth: boolean;
   readonly isLoading: boolean;
-}
-
-export interface IsLoggedIn {
-  readonly message: string;
-  readonly uid: string;
 }
 
 export interface Login {

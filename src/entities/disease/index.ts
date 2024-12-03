@@ -1,5 +1,6 @@
-export type { Disease, GetDiseaseBody } from './model/types';
+export type { Disease } from './model/types';
 export {
+  diseaseApi,
   useGetPrefixesQuery,
   useGetPrefixesWithWordsQuery,
   useLazyGetByIdQuery,

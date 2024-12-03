@@ -5,9 +5,9 @@ import { useState } from 'react';
 
 import { loginData } from '@/pages/login/model/login-schema';
 
-import { auth, googleProvider } from '@/shared/api/firebase';
+import { auth, googleProvider } from '@/shared/api';
 import { useAppDispatch } from '@/shared/lib/store';
-import { FieldError, errorParser } from '@/shared/lib/zod/errorParser';
+import { FieldError, errorParser } from '@/shared/lib/zod';
 
 export const generalErrorName = 'general';
 

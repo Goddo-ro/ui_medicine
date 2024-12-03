@@ -2,9 +2,9 @@ import { logout, selectAuth } from '@/entities/viewer';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 
-import { auth } from '@/shared/api/firebase';
+import { auth } from '@/shared/api';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';
-import { paths } from '@/shared/routes/routes';
+import { paths } from '@/shared/routes';
 
 import classes from './Auth.module.scss';
 

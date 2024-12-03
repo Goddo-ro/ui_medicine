@@ -1,0 +1,1 @@
+export { PositionedModal } from './PositionedModal';

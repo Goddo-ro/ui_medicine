@@ -10,10 +10,10 @@ import { PointerSkeleton } from '@/widgets/pointer/ui/PointerSkeleton';
 
 import classes from './Pointer.module.scss';
 
-type TPointerProps = { isLoading?: boolean } & PointerHeaderProps &
+type PointerProps = { isLoading?: boolean } & PointerHeaderProps &
   PointerBodyProps;
 
-export const Pointer = ({ isLoading, ...rest }: TPointerProps) => {
+export const Pointer = ({ isLoading, ...rest }: PointerProps) => {
   return (
     <>
       {isLoading ? (

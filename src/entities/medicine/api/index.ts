@@ -1,9 +1,10 @@
-import { GetMedicineBody, Medicine } from '@/entities/medicine/model/types';
-import { PrefixWords } from '@/widgets/pointer';
+import { GetMedicineBody } from '@/entities/medicine/api/types';
+import { Medicine } from '@/entities/medicine/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/shared/api/client';
-import { Prefix } from '@/shared/ui/prefixes/Prefixes';
+import { API_URL } from '@/shared/api';
+import { PrefixWords } from '@/shared/prefix';
+import { Prefix } from '@/shared/ui/prefixes';
 
 const MEDICINE_BASE_URL = 'medicine';
 

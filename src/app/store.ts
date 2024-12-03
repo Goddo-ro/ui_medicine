@@ -1,9 +1,9 @@
-import { diseaseApi } from '@/entities/disease/api';
-import { medicineApi } from '@/entities/medicine/api';
-import { transactionApi } from '@/entities/transaction/api';
+import { diseaseApi } from '@/entities/disease';
+import { medicineApi } from '@/entities/medicine';
+import { transactionApi } from '@/entities/transaction';
 import { AuthReducer } from '@/entities/viewer';
-import { authApi } from '@/entities/viewer/api/auth';
-import { searchApi } from '@/features/search/api';
+import { authApi } from '@/entities/viewer';
+import { searchApi } from '@/features/search';
 import { MessagesReducer } from '@/widgets/messagesProvider';
 import { configureStore } from '@reduxjs/toolkit';
 

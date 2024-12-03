@@ -1,9 +1,9 @@
-import { PointerParams } from '@/widgets/pointer/model/types';
 import clsx from 'clsx';
 import { NavLink, useParams } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-import { Prefix } from '@/shared/ui/prefixes/Prefixes';
+import { PointerParams } from '@/shared/prefix';
+import { Prefix } from '@/shared/ui/prefixes';
 
 import classes from './Pointer.module.scss';
 

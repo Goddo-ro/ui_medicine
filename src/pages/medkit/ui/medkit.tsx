@@ -5,7 +5,7 @@ import { columns } from '@/pages/medkit/model/consts';
 import { useTableFetcher } from '@/pages/medkit/model/useTableFetcher';
 import { MedkitAddDialog } from '@/pages/medkit/ui/MedkitAddDialog';
 
-import { DataTable } from '@/shared/ui/table/DataTable';
+import { DataTable } from '@/shared/ui/table';
 
 import { GridToolbar } from '@mui/x-data-grid';
 

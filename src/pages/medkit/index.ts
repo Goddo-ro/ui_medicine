@@ -1,1 +1,1 @@
-export { Medkit as default } from './ui/Medkit';
+export { Medkit } from './ui/Medkit';

@@ -1,7 +1,6 @@
+import { navLinks } from '@/widgets/navbar/model/links';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-
-import { navLinks } from '@/shared/consts/navLinks';
 
 import classes from './Navbar.module.scss';
 
@@ -15,5 +14,9 @@ export const Navbar = () => {
       {link.title}
     </NavLink>
   ));
-  return <nav className={classes.navbar}>{links}</nav>;
+  return (
+    <div className={classes.container}>
+      <nav className={classes.navbar}>{links}</nav>
+    </div>
+  );
 };

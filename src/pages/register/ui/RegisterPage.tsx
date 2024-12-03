@@ -1,8 +1,8 @@
 import { useRegister } from '@/pages/register/model/useRegister';
 
-import { Button } from '@/shared/ui/button/Button';
-import { Form } from '@/shared/ui/form/Form';
-import { Input } from '@/shared/ui/input/Input';
+import { Button } from '@/shared/ui/button';
+import { Form } from '@/shared/ui/form';
+import { Input } from '@/shared/ui/input';
 
 export const RegisterPage = () => {
   const { register, errors, isLoading } = useRegister();

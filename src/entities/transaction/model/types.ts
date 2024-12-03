@@ -1,4 +1,4 @@
-import { Medicine } from '@/entities/medicine';
+import { Medicine } from '@/entities/medicine/@x/transaction';
 
 export interface Transaction {
   readonly id?: number;

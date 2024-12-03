@@ -3,13 +3,14 @@ import {
   useGetPrefixesWithWordsQuery,
 } from '@/entities/disease';
 import { PathHistory } from '@/widgets/pathHistory';
-import { Pointer, PointerParams, PrefixWord } from '@/widgets/pointer';
+import { Pointer } from '@/widgets/pointer';
 import { useParams } from 'react-router-dom';
 
 import { useHistoryPaths } from '@/pages/diseasePointer/model/useHistoryPaths';
 
-import { generatePath, paths } from '@/shared/routes/routes';
-import { Error } from '@/shared/ui/error/Error';
+import { PointerParams, PrefixWord } from '@/shared/prefix';
+import { generatePath, paths } from '@/shared/routes';
+import { Error } from '@/shared/ui/error';
 
 export const DiseasePointer = () => {
   const { letter } = useParams<PointerParams>();

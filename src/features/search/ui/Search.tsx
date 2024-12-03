@@ -1,6 +1,6 @@
-import { useSearch } from '@/features/search/lib/useSearch';
 import { generatePathForOption } from '@/features/search/model/generatePathForOption';
 import { highlightMatch } from '@/features/search/model/highlightMatch';
+import { useSearch } from '@/features/search/model/useSearch';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 

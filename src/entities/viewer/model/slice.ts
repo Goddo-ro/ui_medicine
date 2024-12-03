@@ -1,4 +1,4 @@
-import { authApi } from '@/entities/viewer/api/auth';
+import { authApi } from '@/entities/viewer';
 import { AuthState } from '@/entities/viewer/model/types';
 import { createSlice } from '@reduxjs/toolkit';
 

@@ -1,4 +1,4 @@
-import { addMessage } from '@/widgets/messagesProvider/store/slice';
+import { addMessage } from '@/widgets/messagesProvider/model/slice';
 
 import { useAppDispatch } from '@/shared/lib/store';
 

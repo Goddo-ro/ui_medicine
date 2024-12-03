@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDiseaseFetch } from '@/pages/diseaseInfo/model/useDiseaseFetch';
 import { useHistoryPaths } from '@/pages/diseaseInfo/model/useHistoryPaths';
 
-import { generatePath, paths } from '@/shared/routes/routes';
-import { Error } from '@/shared/ui/error/Error';
+import { generatePath, paths } from '@/shared/routes';
+import { Error } from '@/shared/ui/error';
 
 import { CircularProgress } from '@mui/material';
 

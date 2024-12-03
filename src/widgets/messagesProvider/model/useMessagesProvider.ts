@@ -1,5 +1,5 @@
-import { selectMessages } from '@/widgets/messagesProvider/store/selectors';
-import { removeMessage } from '@/widgets/messagesProvider/store/slice';
+import { selectMessages } from '@/widgets/messagesProvider/model/selectors';
+import { removeMessage } from '@/widgets/messagesProvider/model/slice';
 import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/shared/lib/store';

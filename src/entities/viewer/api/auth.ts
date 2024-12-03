@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/shared/api/client';
+import { API_URL } from '@/shared/api';
 
 const AUTH_BASE_URL = 'auth';
 
@@ -20,5 +20,3 @@ export const authApi = createApi({
     }),
   }),
 });
-
-export const { useIsLoggedInMutation } = authApi;

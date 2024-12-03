@@ -1,10 +1,10 @@
 import { generalErrorName, useLogin } from '@/pages/login/model/useLogin';
 import { LoginAuthVariants } from '@/pages/login/ui/LoginAuthVariants';
 
-import { Button } from '@/shared/ui/button/Button';
-import { Error } from '@/shared/ui/error/Error';
-import { Form } from '@/shared/ui/form/Form';
-import { Input } from '@/shared/ui/input/Input';
+import { Button } from '@/shared/ui/button';
+import { Error } from '@/shared/ui/error';
+import { Form } from '@/shared/ui/form';
+import { Input } from '@/shared/ui/input';
 
 export const LoginPage = () => {
   const { login, errors, setErrors, isLoading } = useLogin();

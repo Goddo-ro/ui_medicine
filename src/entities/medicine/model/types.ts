@@ -13,8 +13,3 @@ export interface Medicine {
   readonly type: MedicineType;
   readonly diseases: Disease[];
 }
-
-export interface GetMedicineBody {
-  readonly search?: string;
-  readonly startsWith?: string;
-}

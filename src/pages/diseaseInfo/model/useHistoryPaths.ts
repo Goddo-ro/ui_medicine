@@ -1,8 +1,8 @@
 import { PathModel } from '@/widgets/pathHistory';
 import { generatePath } from 'react-router-dom';
 
-import { diseaseHomeDisplayName } from '@/shared/consts/historyPaths';
-import { paths } from '@/shared/routes/routes';
+import { diseaseHomeDisplayName } from '@/shared/history';
+import { paths } from '@/shared/routes';
 
 export const useHistoryPaths = (
   firstDiseaseLetter: string,

@@ -1,9 +1,9 @@
 import { useGetPrefixesQuery } from '@/entities/disease';
 import { generatePath } from 'react-router-dom';
 
-import { paths } from '@/shared/routes/routes';
-import { Error } from '@/shared/ui/error/Error';
-import { Prefixes } from '@/shared/ui/prefixes/Prefixes';
+import { paths } from '@/shared/routes';
+import { Error } from '@/shared/ui/error';
+import { Prefixes } from '@/shared/ui/prefixes';
 
 import classes from './Disease.module.scss';
 

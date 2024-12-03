@@ -1,6 +1,7 @@
-import { PrefixWord, PrefixWords } from '@/widgets/pointer/model/types';
 import { useAnchorScroll } from '@/widgets/pointer/model/useAnchorScroll';
 import { Link } from 'react-router-dom';
+
+import { PrefixWord, PrefixWords } from '@/shared/prefix';
 
 import classes from './Pointer.module.scss';
 
