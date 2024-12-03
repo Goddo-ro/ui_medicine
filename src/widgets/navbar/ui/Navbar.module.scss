@@ -2,11 +2,13 @@
   background-color: #edf1fc;
   padding: 1.25rem 1rem;
   margin-bottom: 1rem;
+  margin-inline: $content-inline-padding;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  max-width: calc($content-max-width - 2 * $content-inline-padding);
 
   a.active {
     text-decoration: underline;

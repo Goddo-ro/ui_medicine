@@ -1,5 +1,4 @@
 import { Transaction } from '@/entities/transaction';
-import clsx from 'clsx';
 import { useCallback, useState } from 'react';
 
 import { columns } from '@/pages/medkit/model/consts';
@@ -47,7 +46,7 @@ export const Medkit = () => {
             : undefined
         }
       />
-      <div className={clsx(classes.container, 'unwidth')}>
+      <div className={classes.container}>
         <DataTable
           columns={columns}
           rows={transactions}

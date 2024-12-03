@@ -2,21 +2,8 @@ $header-vertical-padding: 0.5em;
 $header-title-height: 30x;
 $link-padding: 12px;
 
-:global(.app:not(:has(.unwidth))) {
-  .header__content {
-    max-width: $content-max-width;
-    gap: 2rem;
-  }
-}
-
 .header {
   background-color: $header-background-color;
-  height: $header-height;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
 
   .header__content {
     display: flex;
@@ -24,6 +11,8 @@ $link-padding: 12px;
     align-items: center;
     justify-content: space-between;
     margin-inline: auto;
+    max-width: $content-max-width;
+    gap: 2rem;
   }
 
   .header__title {

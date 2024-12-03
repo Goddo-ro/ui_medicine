@@ -36,14 +36,11 @@ li {
     flex: 2;
     padding: $content-vertical-padding $content-inline-padding;
     position: relative;
-    margin-top: $header-height;
+    margin-top: $fixed-header-height;
     width: 100%;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
-  }
-
-  .app__content:not(:has(.unwidth)) {
     max-width: $content-max-width;
   }
 }

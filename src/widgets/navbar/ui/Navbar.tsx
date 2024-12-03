@@ -5,8 +5,6 @@ import { navLinks } from '@/shared/consts/navLinks';
 
 import classes from './Navbar.module.scss';
 
-// TODO: set fixed position
-
 export const Navbar = () => {
   const links = navLinks.map((link) => (
     <NavLink
