@@ -25,7 +25,7 @@ export const Search = ({ className }: SearchProps) => {
       disablePortal
       inputValue={search}
       onInputChange={(_, value, reason) => {
-        if (reason !== 'reset') {
+        if (reason === 'input') {
           setSearch(value);
         }
       }}

@@ -54,6 +54,7 @@ const AuthButtons = () => {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        fontSize='large'
       />
       <Menu
         id='basic-menu'

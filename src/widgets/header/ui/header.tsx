@@ -1,7 +1,9 @@
 import { Auth } from '@/features/auth';
 import { Search } from '@/features/search';
+import { Link } from 'react-router-dom';
 
 import AppIcon from '@/shared/icons/medicine.svg';
+import { paths } from '@/shared/routes';
 
 import DehazeIcon from '@mui/icons-material/Dehaze';
 
@@ -19,10 +21,12 @@ export const Header = ({ toggleNavbarOpen }: HeaderProps) => {
           onClick={toggleNavbarOpen}
           className={classes.navbarToggle}
         />
-        <div className={classes.header__title}>
-          <img src={AppIcon} alt='MedWiki' />
-          <h1>MedWiki</h1>
-        </div>
+        <Link to={paths.medicines}>
+          <div className={classes.header__title}>
+            <img src={AppIcon} alt='MedWiki' />
+            <h1>MedWiki</h1>
+          </div>
+        </Link>
         <Search className={classes.search} />
         <Auth />
       </div>
